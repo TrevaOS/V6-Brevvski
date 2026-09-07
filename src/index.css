@@ -1,0 +1,19 @@
+/*
+  STYLE REMINDER — V6 Brewski Timber House.
+  Design tokens (inspired by the property interior: honey-wood bar, rattan pendants,
+  teak ceiling): deep walnut #24140c, warm timber #4a2c18, golden wood #e8962c,
+  honey wood #dfb170, warm cream #f5ecdc, wood varnish #a6712e. One distinctive
+  display family, one humanist body family, offset frames, and tactile motion.
+*/
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;700;800&display=swap");
+@import "tailwindcss";
+@import "./styles/part1.css";
+@import "./styles/part2.css";
+@import "./styles/part3.css";
+@import "./styles/part4.css";
+@import "./styles/part5.css";
+@import "./styles/part6.css";
+@import "./styles/part7.css";
+@import "./styles/part8.css";
+@import "./styles/part9.css";
+@import "./styles/part10.css";
