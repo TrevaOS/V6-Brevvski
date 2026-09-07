@@ -1,0 +1,241 @@
+@media (max-width: 600px) {
+  html { scroll-padding-top: 74px; }
+  .hero-overlay { background: linear-gradient(90deg, rgba(20, 10, 5, .94), rgba(20, 10, 5, .5)), linear-gradient(0deg, rgba(20, 10, 5, .98), rgba(20, 10, 5, .12) 72%); }
+  .hero-actions { gap: 10px; }
+  .button { min-height: 50px; }
+  .story-photo-wrap:hover .story-photo, .visit-photo-wrap:hover .visit-photo { transform: none; }
+  .booking-panel { box-shadow: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-scroll svg { animation: none; }
+  .story-photo-wrap:hover .story-photo, .visit-photo-wrap:hover .visit-photo { transform: none; }
+}
+
+.error-screen { min-height: 100vh; display: grid; place-content: center; justify-items: start; gap: 18px; padding: 3rem clamp(1.5rem, 7vw, 7rem); background: radial-gradient(circle at 76% 18%, rgba(232, 150, 44, .13), transparent 25%), var(--espresso); color: var(--parchment); }
+.error-screen__mark { display: grid; place-items: center; width: 48px; height: 48px; background: var(--amber); color: var(--espresso); box-shadow: 5px 5px 0 rgba(232, 150, 44, .2); }
+.error-screen__eyebrow { color: var(--amber); font: 800 11px/1 var(--font-body); letter-spacing: .13em; text-transform: uppercase; }
+.error-screen h1 { margin: 0; font: 700 clamp(3.25rem, 8vw, 7rem)/.91 var(--font-display); letter-spacing: -.06em; text-transform: uppercase; }
+.error-screen h1 em { color: var(--amber); font-style: normal; }
+.error-screen__copy { max-width: 410px; color: rgba(246, 239, 226, .7); font-size: 15px; line-height: 1.7; }
+.error-screen__details { max-width: min(760px, 100%); max-height: 180px; overflow: auto; padding: 14px; background: rgba(0, 0, 0, .26); color: rgba(246, 239, 226, .62); font: 11px/1.5 ui-monospace, monospace; white-space: pre-wrap; }
+
+/* Map and journey integration: a light editorial pause inside V6 Brewski Timber House.
+   The route card borrows the supplied concept's story-led planning language while
+   keeping V6's brass amber, square geometry, offset framing, and measured motion. */
+.visit-section--journey {
+  position: relative;
+  overflow: hidden;
+  background: var(--parchment);
+  color: var(--ink);
+  background-image: radial-gradient(ellipse at 88% 10%, rgba(166,113,46,.14), transparent 25%), linear-gradient(125deg, rgba(255,255,255,.22), transparent 42%);
+}
+
+.visit-section--journey::after {
+  content: "GP";
+  position: absolute;
+  right: -1.5rem;
+  bottom: -9rem;
+  color: rgba(166,113,46,.07);
+  font: 800 27rem/.7 var(--font-display);
+  letter-spacing: -.1em;
+  pointer-events: none;
+}
+
+.journey-head,
+.journey-grid {
+  position: relative;
+  z-index: 1;
+}
+
+.journey-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(240px, .62fr);
+  gap: clamp(2rem, 8vw, 8rem);
+  align-items: end;
+}
+
+.journey-head h2 {
+  display: grid;
+  gap: .08em;
+  max-width: 800px;
+  margin-top: 23px;
+  color: var(--ink);
+  font: 700 clamp(3.2rem, 6.3vw, 6.55rem)/.94 var(--font-display);
+  letter-spacing: .03em;
+  text-transform: uppercase;
+}
+
+.journey-head h2 span,
+.journey-head h2 em {
+  display: block;
+}
+
+.journey-head h2 em {
+  color: #a6712e;
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: .03em;
+  text-transform: uppercase;
+}
+
+.journey-head > p {
+  max-width: 390px;
+  margin: 0 0 .35rem;
+  color: #6e5640;
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+.journey-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(310px, .92fr);
+  margin-top: clamp(3.2rem, 6vw, 5.5rem);
+  border: 1px solid rgba(51,32,15,.18);
+  background: rgba(239,227,208,.72);
+  box-shadow: 12px 12px 0 rgba(74,44,24,.12);
+}
+
+.journey-map {
+  position: relative;
+  min-height: 430px;
+  overflow: hidden;
+  isolation: isolate;
+  background: #ddc6a0;
+}
+
+.journey-map__wash {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background: radial-gradient(circle at 70% 20%, rgba(255,251,239,.48), transparent 30%), radial-gradient(circle at 10% 90%, rgba(166,113,46,.1), transparent 36%);
+}
+
+.journey-map__grid {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: .34;
+  background-image: linear-gradient(rgba(145,115,78,.11) 1px, transparent 1px), linear-gradient(90deg, rgba(145,115,78,.11) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: linear-gradient(90deg, rgba(0,0,0,.9), transparent 95%);
+}
+
+.journey-map__line {
+  position: absolute;
+  left: 13%;
+  right: 12%;
+  top: 47%;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(166,113,46,.35), #a6712e 46%, rgba(166,113,46,.35));
+  transform: rotate(-6deg);
+  transform-origin: center;
+}
+
+.journey-map__line::after {
+  content: "";
+  position: absolute;
+  inset: -4px 0;
+  border-top: 1px dashed rgba(168,93,41,.28);
+  transform: rotate(2.5deg);
+}
+
+.journey-map__line span {
+  position: absolute;
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  border: 1px solid #a6712e;
+  border-radius: 50%;
+  background: #ddc6a0;
+  transform: translate(-50%, -50%);
+}
+
+.journey-map__line span:nth-child(1) { left: 0; }
+.journey-map__line span:nth-child(2) { left: 50%; }
+.journey-map__line span:nth-child(3) { left: 100%; }
+
+.journey-stop {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: #5f4a38;
+  font: 800 9px/1.25 var(--font-body);
+  letter-spacing: .11em;
+  text-transform: uppercase;
+}
+
+.journey-stop__dot {
+  display: grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  border: 1px solid #a6712e;
+  border-radius: 50%;
+  background: #ddc6a0;
+  color: #fff7e9;
+}
+
+.journey-stop__label small {
+  display: block;
+  margin-top: 4px;
+  color: #8a7258;
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: .08em;
+}
+
+.journey-stop--start { left: 11%; top: 33%; }
+.journey-stop--active { left: 46%; top: 58%; color: #a6712e; }
+.journey-stop--active .journey-stop__dot { width: 30px; height: 30px; border-color: #a6712e; background: #a6712e; box-shadow: 0 0 0 7px rgba(168,93,41,.12); }
+.journey-stop--end { right: 9%; top: 27%; flex-direction: row-reverse; text-align: right; }
+
+.journey-map__route {
+  position: absolute;
+  right: 12%;
+  bottom: 21%;
+  color: rgba(103,75,53,.75);
+  font: 9px var(--font-body);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.journey-map__note {
+  position: absolute;
+  left: 28px;
+  bottom: 25px;
+  max-width: 245px;
+  color: #6e5640;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.journey-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 430px;
+  padding: clamp(2rem, 4vw, 4rem);
+  border-left: 1px solid rgba(51,32,15,.16);
+  background: rgba(245,236,220,.82);
+}
+
+.journey-panel__kicker {
+  color: #a6712e;
+  font: 800 10px var(--font-body);
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+
+.journey-panel h3 {
+  display: grid;
+  gap: .12em;
+  margin: 16px 0 13px;
+  color: var(--ink);
+  font: 700 clamp(2.2rem, 3.6vw, 3.5rem)/.98 var(--font-display);
+  letter-spacing: .02em;
+  text-transform: uppercase;
+}
+
+.journey-panel h3 span { display: block; }
