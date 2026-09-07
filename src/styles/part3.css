@@ -1,0 +1,56 @@
+.beer-detail { display: grid; grid-template-columns: 180px 1fr; gap: 2.5rem; align-items: center; margin: 0 0 25px 110px; padding: 26px 30px; background: rgba(36,20,12,.55); border: 1px solid rgba(232,150,44,.15); animation: reveal-detail .35s var(--ease-out) both; }
+.beer-detail__copy { max-width: 500px; }
+.beer-detail__copy p { margin-top: 13px; color: rgba(245,236,220,.75); line-height: 1.7; font-size: 14px; }
+.detail-pair { margin-top: 20px; padding-top: 14px; border-top: 1px solid rgba(232,150,44,.25); display: flex; gap: 10px; flex-direction: column; }
+.detail-pair strong { color: var(--parchment); font-size: 13px; font-weight: 500; }
+.beer-glass { position: relative; width: 116px; height: 148px; margin: auto; border: 2px solid rgba(245,236,220,.8); border-top: 0; border-radius: 0 0 30px 30px; transform: perspective(200px) rotateY(-8deg); overflow: hidden; background: linear-gradient(90deg, transparent, rgba(255,255,255,.12), transparent); }
+.beer-glass:after { content: ""; position: absolute; bottom: -9px; left: 50%; width: 72px; height: 10px; border: 2px solid rgba(245,236,220,.6); border-top: 0; transform: translateX(-50%); }
+.beer-glass__liquid { position: absolute; inset: 30px 3px 4px; background: var(--beer-color); border-radius: 0 0 26px 26px; box-shadow: inset 14px 0 15px rgba(255,255,255,.11); }
+.beer-glass__foam { position: absolute; z-index: 2; top: 25px; left: 4px; right: 4px; height: 17px; background: #f0e3c8; border-radius: 50% 55% 42% 47%; box-shadow: 13px 2px 0 #f0e3c8, 31px -2px 0 #f0e3c8, 53px 1px 0 #f0e3c8; }
+.beer-glass__shine { position: absolute; z-index: 3; top: 49px; left: 21px; width: 8px; height: 64px; background: rgba(255,255,255,.18); border-radius: 50%; filter: blur(2px); }
+.tap-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 28px; position: relative; z-index: 1; color: rgba(245,236,220,.5); font: 10px "IBM Plex Mono", monospace; letter-spacing: .12em; text-transform: uppercase; }
+.text-link--light { color: var(--amber); margin-top: 0; }
+
+.kitchen-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: clamp(3rem, 8vw, 9rem); align-items: center; }
+.kitchen-copy { max-width: 360px; }
+.kitchen-copy h2 { margin-top: 24px; }
+.kitchen-copy h2 em { display: inline-block; font-size: .9em; }
+.kitchen-copy p { color: #6e5640; font-size: 15px; line-height: 1.7; margin-top: 28px; }
+.kitchen-copy .button { margin-top: 34px; }
+.kitchen-photo-wrap { position: relative; }
+.kitchen-photo { display: block; width: 100%; aspect-ratio: 1.1; object-fit: cover; filter: saturate(.83) contrast(1.08); }
+.kitchen-note { position: absolute; left: -34px; bottom: 28px; width: 195px; padding: 18px 20px; background: var(--amber); color: var(--espresso); transform: rotate(-3deg); box-shadow: 14px 14px 0 rgba(74,44,24,.14); }
+.kitchen-note span { display: block; font: 9px "IBM Plex Mono", monospace; letter-spacing: .13em; text-transform: uppercase; margin-bottom: 10px; }
+.kitchen-note strong { font: 500 23px/.9 "Barlow Condensed", sans-serif; letter-spacing: .02em; text-transform: uppercase; }
+
+.visit-section { background: var(--espresso); color: var(--parchment); }
+.visit-top { max-width: 780px; }
+.visit-top h2 { margin-top: 23px; }
+.visit-top p { max-width: 390px; color: rgba(245,236,220,.6); line-height: 1.6; margin-top: 25px; }
+.visit-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(2rem, 7vw, 8rem); align-items: stretch; margin-top: clamp(3rem, 7vw, 6rem); }
+.visit-photo-wrap { position: relative; min-height: 490px; }
+.visit-photo { display: block; width: 100%; height: 100%; min-height: 490px; object-fit: cover; filter: saturate(.75) contrast(1.1); }
+.route-tag { position: absolute; left: 24px; bottom: 24px; display: flex; align-items: center; gap: 11px; padding: 13px 15px; background: rgba(36,20,12,.88); border: 1px solid rgba(232,150,44,.38); color: var(--amber); font: 10px/1.45 "IBM Plex Mono", monospace; letter-spacing: .1em; text-transform: uppercase; }
+.route-tag strong { color: var(--parchment); font-weight: 400; }
+.visit-card { display: flex; flex-direction: column; justify-content: center; padding: clamp(1.8rem, 4vw, 4rem) 0; }
+.visit-card__top { display: flex; align-items: center; gap: 9px; color: var(--amber); font: 10px "IBM Plex Mono", monospace; letter-spacing: .12em; text-transform: uppercase; }
+.visit-card h3 { margin-top: 24px; font: 600 clamp(3rem, 5vw, 5.2rem)/.82 "Barlow Condensed", sans-serif; letter-spacing: -.02em; text-transform: uppercase; }
+.visit-details { margin: 42px 0; border-top: 1px solid rgba(232,150,44,.24); }
+.visit-details > div { padding: 17px 0; border-bottom: 1px solid rgba(232,150,44,.24); }
+.visit-details small { color: var(--amber); font: 10px "IBM Plex Mono", monospace; letter-spacing: .15em; text-transform: uppercase; }
+.visit-details p { margin-top: 7px; color: rgba(245,236,220,.75); font-size: 13px; line-height: 1.55; }
+.directions-link { align-self: center; display: inline-flex; gap: 9px; align-items: center; margin-top: 18px; background: none; color: rgba(245,236,220,.64); font: 10px "IBM Plex Mono", monospace; letter-spacing: .12em; text-transform: uppercase; cursor: pointer; transition: color .2s ease, gap .2s var(--ease-out); }
+.directions-link:hover { color: var(--amber); gap: 14px; }
+
+.site-footer { background-color: #170e08; background-image: radial-gradient(ellipse at 86% 5%, rgba(232,150,44,.07), transparent 24%), linear-gradient(140deg, rgba(255,255,255,.018), transparent 45%); padding-top: 66px; padding-bottom: 28px; }
+.footer-main { display: flex; align-items: flex-start; justify-content: space-between; gap: 2rem; padding-bottom: 65px; }
+.footer-main .wordmark__name { color: var(--parchment); }
+.footer-line { margin-left: auto; color: var(--amber); font: 500 clamp(2rem, 4vw, 4rem)/.84 "Barlow Condensed", sans-serif; text-transform: uppercase; text-align: right; }
+.footer-line em { font-family: "Barlow Condensed", sans-serif; font-style: italic; text-transform: none; font-weight: 600; color: var(--parchment); }
+.footer-social { display: flex; gap: 10px; }
+.footer-social a { display: grid; place-items: center; width: 38px; height: 38px; border: 1px solid rgba(232,150,44,.35); color: var(--amber); border-radius: 50%; transition: background .2s ease, color .2s ease; }
+.footer-social a:hover { background: var(--amber); color: var(--espresso); }
+.footer-bottom { display: flex; justify-content: space-between; border-top: 1px solid rgba(232,150,44,.2); padding-top: 20px; color: rgba(245,236,220,.42); font: 10px "IBM Plex Mono", monospace; letter-spacing: .08em; text-transform: uppercase; }
+
+.mobile-menu { display: none; }
+.booking-backdrop { position: fixed; z-index: 50; inset: 0; display: flex; justify-content: flex-end; background: rgba(20,10,5,.72); backdrop-filter: blur(9px); animation: fade-in .25s ease both; }
