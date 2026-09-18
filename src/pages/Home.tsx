@@ -72,6 +72,7 @@ const beers = [
 ];
 
 const navItems = [
+  ["Home", "home"],
   ["Menu", "menu"],
   ["Gallery", "gallery"],
   ["Corporate", "corporate"],
@@ -192,6 +193,11 @@ export default function Home() {
   };
 
   const navigateToSection = (id: string) => {
+    if (id === "home") {
+      navigate("/");
+      return;
+    }
+
     if (!homeSectionIds.has(id)) {
       navigate("/" + id);
       return;
@@ -243,7 +249,7 @@ export default function Home() {
             <button
               type="button"
               key={id}
-              className={!homeSectionIds.has(id) && currentPath === "/" + id ? "is-active" : ""}
+              className={id === "home" ? (currentPath === "/" ? "is-active" : "") : (!homeSectionIds.has(id) && currentPath === "/" + id ? "is-active" : "")}
               onClick={() => navigateToSection(id)}
             >
               {label}
