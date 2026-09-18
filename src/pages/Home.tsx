@@ -138,6 +138,7 @@ export default function Home() {
   const [bookingOpen, setBookingOpen] = useState(false);
   const [activeBeer, setActiveBeer] = useState(0);
   const [submitted, setSubmitted] = useState(false);
+  const [guestOption, setGuestOption] = useState("2");
   const [path, setPath] = useState(() => window.location.pathname || "/");
 
   const normalizedPath = path.replace(/\/+$/, "") || "/";
@@ -249,6 +250,7 @@ export default function Home() {
     setBookingOpen(true);
     setMenuOpen(false);
     setSubmitted(false);
+    setGuestOption("2");
   };
 
   const submitBooking = (event: React.FormEvent<HTMLFormElement>) => {
@@ -429,8 +431,27 @@ export default function Home() {
 
         {currentPath === "/about-us" && (
         <section id="about-us" className="about-section section-pad page-pad standalone-section">
-          <div className="about-section__head" data-reveal="fade-up"><div className="section-kicker section-kicker--light">Brand / About V6 Brewski</div><h2>Made here.<br /><em>For here.</em></h2></div>
-          <div className="about-section__body"><p className="lead-copy">V6 Brewski is a Majestic microbrewery and kitchen built around the pause between places.</p><div><p>We brew in small batches, cook for the middle of the table, and leave enough space for the evening to become its own plan.</p><button type="button" className="text-link text-link--light" onClick={() => toast("The V6 Brewski story is being brewed one batch at a time.")}>Our brewing notes <ArrowUpRight size={15} /></button></div></div>
+          <div className="about-section__hero" data-reveal="fade-up">
+            <div className="about-section__head">
+              <div className="section-kicker section-kicker--light">Brand / About V6 Brewski</div>
+              <h2>Made here.<br /><em>For here.</em></h2>
+            </div>
+            <aside className="about-section__intro-card">
+              <div className="about-section__mark-wrap"><img src={assets.mark} alt="V6 Brewski The Exchange emblem" /></div>
+              <div>
+                <span className="about-section__eyebrow">The Exchange · Majestic</span>
+                <p>We brew in small batches, cook for the middle of the table, and make room for the evening to become its own plan.</p>
+                <button type="button" className="about-cta" onClick={() => toast("The V6 Brewski story is being brewed one batch at a time.")}>Our brewing notes <ArrowUpRight size={15} /></button>
+              </div>
+            </aside>
+          </div>
+          <div className="about-section__body">
+            <p className="lead-copy">V6 Brewski is a Majestic microbrewery and kitchen built around the pause between places.</p>
+            <div className="about-section__detail">
+              <span>Beer · Kitchen · The Exchange</span>
+              <p>Rooted in Majestic, the house brings brewing, food and the energy of Bengaluru into one warm stop before or after the journey.</p>
+            </div>
+          </div>
         </section>
         )}
 
@@ -485,7 +506,7 @@ export default function Home() {
         <footer className="site-footer page-pad"><div className="footer-main"><Wordmark /><div className="footer-line">Brewed. Poured. Lived.<br /><em>Majestically.</em></div><div className="footer-social"><a href="https://www.instagram.com/" target="_blank" rel="noreferrer" aria-label="V6 Brewski Brewery on Instagram"><Instagram size={19} /></a><a href="/visit" aria-label="Find V6 Brewski Brewery" onClick={(event) => { event.preventDefault(); navigate("/visit") }}><MapPin size={19} /></a></div></div><div className="footer-bottom"><span>© 2026 V6 Brewski Brewery. All rights reserved.</span><span>21+ only  Drink responsibly</span><span>Majestic Bengaluru</span></div></footer>
       </main>
 
-      {bookingOpen && <div className="booking-backdrop" role="presentation" onClick={() => setBookingOpen(false)}><aside className="booking-panel" role="dialog" aria-modal="true" aria-labelledby="booking-title" onClick={(event) => event.stopPropagation()}><button type="button" className="booking-close" onClick={() => setBookingOpen(false)} aria-label="Close booking"><X size={20} /></button>{submitted ? <div className="booking-success"><div className="success-mark"><Check size={22} /></div><div className="section-kicker">Reservation received</div><h2 id="booking-title">Arrival<br /><em>confirmed.</em></h2><p>Your table request has been captured and is ready for confirmation.</p><button type="button" className="button button--amber" onClick={() => setBookingOpen(false)}>Back to the site <ArrowRight size={16} /></button></div> : <><div className="section-kicker">Platform 06 / Reservations</div><h2 id="booking-title">Reserve<br /><em>your table.</em></h2><p className="booking-intro">Choose your date, guest count and mobile number. We’ll hold the table for your arrival.</p><form onSubmit={submitBooking}><label htmlFor="booking-name">Name<input id="booking-name" name="name" autoComplete="name" required placeholder="Your name" /></label><div className="form-row"><label htmlFor="booking-date">Date<input id="booking-date" name="date" required type="date" /></label><label htmlFor="booking-guests">Guests<select id="booking-guests" name="guests" defaultValue="2"><option value="2">2 guests</option><option value="3">3 guests</option><option value="4">4 guests</option><option value="5">5 or more guests</option></select></label></div><label htmlFor="booking-phone">Mobile number<input id="booking-phone" name="phone" autoComplete="tel" required type="tel" placeholder="+91" /></label><button className="button button--amber button--wide" type="submit">Request a table <ArrowUpRight size={16} /></button></form><p className="booking-footnote"><CalendarDays size={14} /> Tuesday to Sunday 12 PM to 1 AM</p></>}</aside></div>}
+      {bookingOpen && <div className="booking-backdrop" role="presentation" onClick={() => setBookingOpen(false)}><aside className="booking-panel" role="dialog" aria-modal="true" aria-labelledby="booking-title" onClick={(event) => event.stopPropagation()}><button type="button" className="booking-close" onClick={() => setBookingOpen(false)} aria-label="Close booking"><X size={20} /></button>{submitted ? <div className="booking-success"><div className="success-mark"><Check size={22} /></div><div className="section-kicker">Reservation received</div><h2 id="booking-title">Arrival<br /><em>confirmed.</em></h2><p>Your table request has been captured and is ready for confirmation.</p><button type="button" className="button button--amber" onClick={() => setBookingOpen(false)}>Back to the site <ArrowRight size={16} /></button></div> : <><div className="section-kicker">Platform 06 / Reservations</div><h2 id="booking-title">Reserve<br /><em>your table.</em></h2><p className="booking-intro">Choose your date, guest count and contact details. We’ll hold the table for your arrival.</p><form onSubmit={submitBooking}><label htmlFor="booking-name">Name<input id="booking-name" name="name" autoComplete="name" required placeholder="Your name" /></label><label htmlFor="booking-email">Email<input id="booking-email" name="email" autoComplete="email" required type="email" placeholder="you@example.com" /></label><div className="form-row"><label htmlFor="booking-date">Date<input id="booking-date" name="date" required type="date" /></label><label htmlFor="booking-guests">Guests<select id="booking-guests" name="guests" value={guestOption} onChange={(event) => setGuestOption(event.target.value)}><option value="2">2 guests</option><option value="3">3 guests</option><option value="4">4 guests</option><option value="5">5 or more guests</option><option value="custom">Custom</option></select></label></div>{guestOption === "custom" && <label htmlFor="booking-custom-guests">Custom guest count<input id="booking-custom-guests" name="customGuests" required type="number" min="1" max="50" inputMode="numeric" placeholder="Enter number of guests" /></label>}<label htmlFor="booking-phone">Mobile number<input id="booking-phone" name="phone" autoComplete="tel" required type="tel" placeholder="+91" /></label><button className="button button--amber button--wide" type="submit">Request a table <ArrowUpRight size={16} /></button></form><p className="booking-footnote"><CalendarDays size={14} /> Tuesday to Sunday 12 PM to 1 AM</p></>}</aside></div>}
     </div>
   );
 }
