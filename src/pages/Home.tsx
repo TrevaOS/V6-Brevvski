@@ -34,40 +34,64 @@ const assets = {
 
 const beers = [
   {
-    number: "01",
-    style: "German Pilsner",
-    name: "Majestic Pils",
-    abv: "4.8%",
-    ibu: "16",
-    note: "Bright, floral, and clean with a crisp finish that keeps the conversation moving.",
-    color: "#dfa042",
-  },
-  {
-    number: "02",
-    style: "Japanese Lager",
-    name: "Midnight Express",
-    abv: "5.2%",
+    number: "06-01",
+    style: "House Lager",
+    name: "Majestic Lager",
+    abv: "4.5%",
     ibu: "18",
-    note: "Delicate rice sweetness, noble hops, and a dry, impossibly refreshing finish.",
-    color: "#e8c27a",
+    status: "live",
+    statusLabel: "Live",
+    note: "Bright, clean, and crisp with a finish built for the first pour of the evening.",
+    pair: "Smoked starters",
+    color: "#E6B92C",
   },
   {
-    number: "03",
-    style: "West Coast IPA",
-    name: "Tropic Thunder",
-    abv: "6.5%",
-    ibu: "60",
-    note: "Pine, grapefruit, and a soft tropical lift for the ones who like their pints loud.",
-    color: "#c77a2e",
+    number: "06-02",
+    style: "Wheat Beer",
+    name: "Hefeweizen",
+    abv: "4.0%",
+    ibu: "12",
+    status: "live",
+    statusLabel: "Live",
+    note: "Soft wheat, gentle fruit, and a rounded finish made for an easy second round.",
+    pair: "Grilled plates",
+    color: "#A65F2C",
   },
   {
-    number: "04",
-    style: "Oatmeal Stout",
-    name: "Velvet Night",
-    abv: "5.6%",
-    ibu: "28",
-    note: "Roasted coffee, dark chocolate, and a satin-smooth body made for slow evenings.",
-    color: "#54301a",
+    number: "06-03",
+    style: "India Pale Ale",
+    name: "West Coast IPA",
+    abv: "6.2%",
+    ibu: "45",
+    status: "next",
+    statusLabel: "Next",
+    note: "Citrus, pine, and a clean bitter edge with a bright aromatic lift.",
+    pair: "Spiced wings & fries",
+    color: "#E4574F",
+  },
+  {
+    number: "06-04",
+    style: "Stout",
+    name: "Dark Stout",
+    abv: "5.5%",
+    ibu: "32",
+    status: "sold",
+    statusLabel: "Sold out",
+    note: "Roasted malt, dark chocolate, and a smooth body for a slower pour.",
+    pair: "Dark chocolate dessert",
+    color: "#3A251D",
+  },
+  {
+    number: "06-05",
+    style: "Rotating Tap",
+    name: "Seasonal Brew",
+    abv: "5.2%",
+    ibu: "24",
+    status: "sold",
+    statusLabel: "Sold out",
+    note: "A rotating house brew that changes with the season and the brewer's board.",
+    pair: "Ask the kitchen",
+    color: "#31543A",
   },
 ];
 
@@ -287,7 +311,7 @@ export default function Home() {
             ))}
           </div>
           <div className="mobile-menu__footer">
-            <p>Fresh off the brass.<br />Five minutes from the station.</p>
+            <p>Platform 06 / Majestic<br />V6 Route · Live</p>
             <button type="button" className="button button--amber" onClick={openBooking}>Reserve a table <ArrowRight size={16} /></button>
           </div>
         </div>
@@ -301,17 +325,24 @@ export default function Home() {
           <div className="hero-overlay" />
           <div className="hero-beam" />
           <div className="hero-content page-pad">
-            <div className="eyebrow eyebrow--light"><span className="eyebrow__line" />Craft beer and kitchen</div>
+            <div className="eyebrow eyebrow--light"><span className="eyebrow__line" />Platform 06 · Majestic</div>
             <h1 className="hero-title">Brewed for the <em>city in motion.</em></h1>
-            <p className="hero-dek">Craft beer, a proper kitchen, and late evenings in the heart of Majestic.</p>
+            <p className="hero-dek">V6 Brewski — bold brews, a proper kitchen, and late evenings at the Majestic exchange.</p>
             <div className="hero-actions">
-              <button type="button" className="button button--amber" onClick={() => navigateToSection("on-tap")}>See what is pouring <ArrowUpRight size={16} /></button>
+              <button type="button" className="button button--amber" onClick={() => navigateToSection("on-tap")}>Now pouring <ArrowUpRight size={16} /></button>
               <button type="button" className="button button--ghost" onClick={openBooking}>Reserve a table <ArrowUpRight size={16} /></button>
             </div>
             <div className="hero-footnotes"><span>21+ only</span><span>Five minutes from the station</span><span>Fresh beer and good food</span></div>
           </div>
-          <div className="hero-side-note"><span className="hero-side-note__dot" />Open today <strong>12 PM to 1 AM</strong></div>
+          <div className="hero-side-note"><span className="hero-side-note__dot" />Next brew <strong>20:45</strong></div>
           <div className="hero-scroll"><span>Scroll to explore</span><ArrowDownRight size={18} /></div>
+        </section>
+
+        <section className="brand-board page-pad" aria-label="V6 Brewski route board">
+          <div className="brand-board__tile brand-board__tile--platform"><small>Platform</small><strong>06</strong></div>
+          <div className="brand-board__tile"><small>Route</small><strong>V6-01</strong></div>
+          <div className="brand-board__tile brand-board__tile--destination"><small>Destination</small><strong>Majestic → V6 Brewski</strong></div>
+          <div className="brand-board__tile brand-board__tile--live"><small>Arrival</small><strong><span className="status-dot status-dot--live" /> Live</strong></div>
         </section>
 
         <section className="visit-bar page-pad" aria-label="Plan your visit">
@@ -321,22 +352,23 @@ export default function Home() {
         </section>
 
         <div className="ticker" aria-label="Brewery highlights">
-          <div className="ticker__track" aria-hidden="true">Craft <i>✦</i> Beer <i>✦</i> Food <i>✦</i> Good times <i>✦</i> Bengaluru <i>✦</i> Craft <i>✦</i> Beer <i>✦</i> Food <i>✦</i> Good times <i>✦</i> Bengaluru <i>✦</i></div>
+          <div className="ticker__track" aria-hidden="true">PLATFORM 06 <i>→</i> NOW POURING <i>→</i> ROUTE V6-01 <i>→</i> DESTINATION MAJESTIC <i>→</i> ARRIVAL <i>●</i> LIVE <i>→</i> PLATFORM 06 <i>→</i> NOW POURING <i>→</i> ROUTE V6-01 <i>→</i> DESTINATION MAJESTIC <i>→</i> ARRIVAL <i>●</i> LIVE <i>→</i></div>
         </div>
 
         <section id="story" className="story-section page-pad section-pad">
-          <div className="section-kicker">The V6 Brewski story</div>
-          <div className="route-trace route-trace--story" aria-hidden="true"><span>Majestic</span><i /><span>Arrival</span></div>
+          <div className="section-kicker">Route V6-01 / The story</div>
+          <div className="route-trace route-trace--story" aria-hidden="true"><span>Origin: Majestic</span><i /><span>Arrival: V6 Brewski</span></div>
           <div className="story-grid">
-            <div className="story-heading" data-reveal="fade-up"><h2>Brewed in the <span>middle</span><br /> of it.</h2><div className="story-stamp">Brewed<br />in the<br /><strong>heart</strong><br />of it.</div></div>
+            <div className="story-heading" data-reveal="fade-up"><h2>Brewed in the <span>middle</span><br /> of it.</h2><div className="story-stamp">V6<br />Brewski<br /><strong>06</strong><br />Platform</div></div>
             <div className="story-photo-wrap"><div className="photo-index">The room</div><img src={assets.property} alt="Warm timber brewery interior with woven pendant lamps and a glowing bar" className="story-photo" /><div className="photo-caption">The light, timber, and brass that set the house tone.</div></div>
             <div className="story-copy"><p className="lead-copy">Majestic is where Bengaluru crosses paths. V6 Brewski is the pause between places, poured for the first cold sip after a long commute.</p><p>Our beers are brewed in small batches, on site, with a kitchen that keeps the table moving.</p><button type="button" className="text-link" onClick={() => toast("The V6 Brewski story is being brewed one batch at a time.")}>Read our story <ArrowUpRight size={15} /></button></div>
           </div>
         </section>
 
         <section id="on-tap" className="tap-section section-pad page-pad">
-          <div className="tap-header" data-reveal="fade-up"><div><div className="section-kicker section-kicker--light">What is pouring</div><h2>Fresh off<br /><em>the brass.</em></h2></div><p className="tap-intro">Four house pours, brewed here and tuned for the city. Open a row for style, strength, and the best plate to pair with it.</p></div>
-          <div className="route-trace route-trace--tap" aria-hidden="true"><span>Fresh pours</span><i /><span>Platform side</span></div>
+          <div className="tap-header" data-reveal="fade-up"><div><div className="section-kicker section-kicker--light">Now pouring</div><h2>Fresh off<br /><em>the brass.</em></h2></div><p className="tap-intro">Route, brew, ABV, IBU and live status — the V6 platform board for today's house pours.</p></div>
+          <div className="route-trace route-trace--tap" aria-hidden="true"><span>Platform 06</span><i /><span>Last call 22:45</span></div>
+          <div className="tap-board-meta"><span>Route</span><strong>V6 / Majestic</strong><span>Next brew</span><strong>20:45</strong></div>
           <div className="beer-list" role="list">
             {beers.map((beer, index) => {
               const isActive = index === activeBeer;
@@ -346,25 +378,26 @@ export default function Home() {
                     <span className="beer-number">{beer.number}</span>
                     <span className="beer-meta"><small>{beer.style}</small><strong>{beer.name}</strong></span>
                     <span className="beer-stats"><small>ABV</small>{beer.abv}<i>·</i><small>IBU</small>{beer.ibu}</span>
+                    <span className={`beer-status beer-status--${beer.status}`}><span className={`status-dot status-dot--${beer.status}`} />{beer.statusLabel}</span>
                     <span className="beer-arrow"><ChevronDown size={18} /></span>
                   </button>
-                  {isActive && <div className="beer-detail" id={`beer-detail-${index}`}><div className="beer-glass" style={{ "--beer-color": beer.color } as React.CSSProperties}><div className="beer-glass__foam" /><div className="beer-glass__liquid" /><div className="beer-glass__shine" /></div><div className="beer-detail__copy"><div className="detail-label">House pour · 330 ml</div><p>{beer.note}</p><div className="detail-pair"><span>Pairs with</span><strong>{index === 3 ? "Dark chocolate dessert" : index === 2 ? "Spiced wings & fries" : "Smoked starters"}</strong></div></div></div>}
+                  {isActive && <div className="beer-detail" id={`beer-detail-${index}`}><div className="beer-glass" style={{ "--beer-color": beer.color } as React.CSSProperties}><div className="beer-glass__foam" /><div className="beer-glass__liquid" /><div className="beer-glass__shine" /></div><div className="beer-detail__copy"><div className="detail-label">House pour · 330 ml</div><p>{beer.note}</p><div className="detail-pair"><span>Pairs with</span><strong>{beer.pair}</strong></div></div></div>}
                 </div>
               );
             })}
           </div>
-          <div className="tap-footer"><span>More pours rotate weekly</span><button type="button" className="text-link text-link--light" onClick={() => toast("Ask the bar team what is rotating this week.")}>View the full tap list <ArrowUpRight size={15} /></button></div>
+          <div className="tap-footer"><span>Route board updates with every rotating tap</span><button type="button" className="text-link text-link--light" onClick={() => toast("Ask the bar team what is rotating this week.")}>View the full tap list <ArrowUpRight size={15} /></button></div>
         </section>
 
         <section id="kitchen" className="kitchen-section section-pad">
-          <div className="page-pad kitchen-grid"><div className="kitchen-copy" data-reveal="fade-up"><div className="section-kicker">The kitchen</div><h2>A table for<br /><em>the whole night.</em></h2><p>Big flavours, honest ingredients, and plates designed for the middle of the table. Bengaluru comfort with a brewery appetite.</p><button type="button" className="button button--dark" onClick={() => navigate("/menu")}>Open the menu <ArrowUpRight size={16} /></button></div><div className="kitchen-photo-wrap" data-reveal="scale-in" style={{ "--reveal-delay": "120ms" } as React.CSSProperties}><img src={assets.food} alt="Shared craft dining dishes on a dark table" className="kitchen-photo" /><div className="kitchen-note"><span>Tonight's table</span><strong>Smoke  spice<br />and a cold one.</strong></div></div></div>
+          <div className="page-pad kitchen-grid"><div className="kitchen-copy" data-reveal="fade-up"><div className="section-kicker">Destination / The kitchen</div><h2>A table for<br /><em>the whole night.</em></h2><p>Big flavours, honest ingredients, and plates designed for the middle of the table. Bengaluru comfort with a brewery appetite.</p><button type="button" className="button button--dark" onClick={() => navigate("/menu")}>Open the menu <ArrowUpRight size={16} /></button></div><div className="kitchen-photo-wrap" data-reveal="scale-in" style={{ "--reveal-delay": "120ms" } as React.CSSProperties}><img src={assets.food} alt="Shared craft dining dishes on a dark table" className="kitchen-photo" /><div className="kitchen-note"><span>Tonight's table</span><strong>Smoke  spice<br />and a cold one.</strong></div></div></div>
         </section>
           </>
         )}
 
         {currentPath === "/menu" && (
         <section id="menu" className="menu-section section-pad page-pad standalone-section">
-          <div className="menu-section__head" data-reveal="fade-up"><div><div className="section-kicker">The menu</div><h2>Good food.<br /><em>No ceremony.</em></h2></div><p>Shareable plates, smoky edges, and enough room on the table for another pint.</p></div>
+          <div className="menu-section__head" data-reveal="fade-up"><div><div className="section-kicker">Platform 06 / The menu</div><h2>Good food.<br /><em>No ceremony.</em></h2></div><p>Shareable plates, smoky edges, and enough room on the table for another pint.</p></div>
           <div className="menu-highlights" role="list">
             {menuHighlights.map(([label, description], index) => <div className="menu-highlight" role="listitem" key={label}><span>0{index + 1}</span><div><strong>{label}</strong><p>{description}</p></div><ArrowUpRight size={17} /></div>)}
           </div>
@@ -374,7 +407,7 @@ export default function Home() {
 
         {currentPath === "/gallery" && (
         <section id="gallery" className="gallery-section section-pad page-pad standalone-section">
-          <div className="gallery-section__head" data-reveal="fade-up"><div><div className="section-kicker section-kicker--light">The gallery</div><h2>See the<br /><em>house glow.</em></h2></div><p>Woven light, warm pours, and a room built for lingering.</p></div>
+          <div className="gallery-section__head" data-reveal="fade-up"><div><div className="section-kicker section-kicker--light">Mood & feel / The gallery</div><h2>See the<br /><em>house glow.</em></h2></div><p>Woven light, warm pours, and a room built for lingering.</p></div>
           <div className="gallery-grid">
             {galleryItems.map((item, index) => <figure className={`gallery-card gallery-card--${index + 1}`} key={item.label} data-reveal="scale-in" style={{ "--reveal-delay": `${index * 60}ms` } as React.CSSProperties}><img src={item.image} alt={item.title} /><figcaption><span>{item.label}</span><strong>{item.title}</strong></figcaption></figure>)}
           </div>
@@ -384,7 +417,7 @@ export default function Home() {
         {currentPath === "/corporate" && (
         <section id="corporate" className="corporate-section section-pad page-pad standalone-section">
           <div className="corporate-grid">
-            <div className="corporate-copy" data-reveal="fade-up"><div className="section-kicker">Corporate tables</div><h2>Bring the<br /><em>whole room.</em></h2><p>Team dinners, offsites, launches, and the kind of meetings that deserve a better table. We make room for groups with good taste and a little time.</p><button type="button" className="button button--dark" onClick={() => toast("Corporate enquiries are ready to connect to your events partner.")}>Plan a group evening <ArrowUpRight size={16} /></button></div>
+            <div className="corporate-copy" data-reveal="fade-up"><div className="section-kicker">Route / Corporate tables</div><h2>Bring the<br /><em>whole room.</em></h2><p>Team dinners, offsites, launches, and the kind of meetings that deserve a better table. We make room for groups with good taste and a little time.</p><button type="button" className="button button--dark" onClick={() => toast("Corporate enquiries are ready to connect to your events partner.")}>Plan a group evening <ArrowUpRight size={16} /></button></div>
             <div className="corporate-card" data-reveal="scale-in"><img src={assets.interior} alt="V6 Brewski bar interior prepared for a group evening" /><div><span>Group dining / Majestic</span><strong>One table.<br />Many reasons.</strong></div></div>
           </div>
         </section>
@@ -392,7 +425,7 @@ export default function Home() {
 
         {currentPath === "/about-us" && (
         <section id="about-us" className="about-section section-pad page-pad standalone-section">
-          <div className="about-section__head" data-reveal="fade-up"><div className="section-kicker section-kicker--light">About V6 Brewski</div><h2>Made here.<br /><em>For here.</em></h2></div>
+          <div className="about-section__head" data-reveal="fade-up"><div className="section-kicker section-kicker--light">Brand / About V6 Brewski</div><h2>Made here.<br /><em>For here.</em></h2></div>
           <div className="about-section__body"><p className="lead-copy">V6 Brewski is a Majestic microbrewery and kitchen built around the pause between places.</p><div><p>We brew in small batches, cook for the middle of the table, and leave enough space for the evening to become its own plan.</p><button type="button" className="text-link text-link--light" onClick={() => toast("The V6 Brewski story is being brewed one batch at a time.")}>Our brewing notes <ArrowUpRight size={15} /></button></div></div>
         </section>
         )}
@@ -401,7 +434,7 @@ export default function Home() {
         <section id="visit" className="visit-section visit-section--journey section-pad page-pad standalone-section">
           <div className="journey-head" data-reveal>
             <div>
-              <div className="section-kicker">Find us</div>
+              <div className="section-kicker">Destination / Find us</div>
               <h2><span>Find us in</span><em>Majestic.</em></h2>
             </div>
             <p>Five minutes from Majestic station.<br />Stay for one round or the whole night.</p>
