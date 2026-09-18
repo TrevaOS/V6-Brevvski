@@ -379,7 +379,7 @@ export default function Home() {
             {beers.map((beer, index) => {
               const isActive = index === activeBeer;
               return (
-                <div className={`beer-row ${isActive ? "beer-row--active" : ""}`} key={beer.name} role="listitem" data-reveal="fade-up" style={{ "--reveal-delay": `${index * 75}ms` } as React.CSSProperties}>
+                <div className={`beer-row ${isActive ? "beer-row--active" : ""}`} key={beer.name} role="listitem">
                   <button type="button" className="beer-row__button" onClick={() => setActiveBeer(isActive ? -1 : index)} aria-expanded={isActive} aria-controls={`beer-detail-${index}`}>
                     <span className="beer-number">{beer.number}</span>
                     <span className="beer-meta"><small>{beer.style}</small><strong>{beer.name}</strong></span>
