@@ -17,3 +17,18 @@
 @import "./styles/part8.css";
 @import "./styles/part9.css";
 @import "./styles/part10.css";
+
+
+/* Standalone routed pages */
+.standalone-section {
+  min-height: 100vh;
+  padding-top: clamp(8.5rem, 12vw, 11rem);
+}
+
+.desktop-nav button.is-active {
+  color: var(--amber);
+}
+
+.mobile-menu__links button.is-active {
+  color: var(--amber);
+}
