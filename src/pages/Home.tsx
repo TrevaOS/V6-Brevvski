@@ -72,9 +72,6 @@ const beers = [
 ];
 
 const navItems = [
-  ["Story", "story"],
-  ["On tap", "on-tap"],
-  ["Kitchen", "kitchen"],
   ["Menu", "menu"],
   ["Gallery", "gallery"],
   ["Corporate", "corporate"],
