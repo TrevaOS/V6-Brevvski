@@ -46,3 +46,421 @@
     flex: 1 1 auto;
   }
 }
+
+
+/* Mobile overlap cleanup — final responsive overrides */
+@media (max-width: 900px) {
+  .site-nav {
+    gap: 12px;
+  }
+
+  .nav-brand {
+    min-width: 0;
+    max-width: calc(100vw - 82px);
+  }
+
+  .nav-brand .wordmark {
+    min-width: 0;
+  }
+
+  .nav-brand .wordmark > div {
+    min-width: 0;
+  }
+
+  .wordmark__name,
+  .wordmark__sub {
+    white-space: nowrap;
+  }
+
+  .menu-trigger {
+    flex: 0 0 auto;
+    margin-left: auto;
+  }
+
+  .standalone-section {
+    padding-top: 6.75rem;
+  }
+
+  .journey-grid,
+  .journey-map,
+  .journey-panel,
+  .gallery-grid,
+  .corporate-grid,
+  .about-section__body,
+  .menu-section__head,
+  .gallery-section__head {
+    min-width: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .page-pad {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .section-pad {
+    padding-top: 4.5rem;
+    padding-bottom: 4.5rem;
+  }
+
+  .standalone-section {
+    min-height: auto;
+    padding-top: 6rem;
+  }
+
+  .site-nav {
+    padding-left: .9rem;
+    padding-right: .9rem;
+  }
+
+  .wordmark {
+    gap: 9px;
+  }
+
+  .wordmark__mark {
+    width: 36px;
+    height: 36px;
+  }
+
+  .wordmark__name {
+    font-size: 15px;
+  }
+
+  .wordmark__sub {
+    margin-top: 3px;
+    font-size: 7px;
+    letter-spacing: .12em;
+  }
+
+  .hero-section {
+    min-height: 720px;
+  }
+
+  .hero-content {
+    padding-top: 118px;
+    padding-bottom: 30px;
+  }
+
+  .hero-title {
+    font-size: clamp(2.75rem, 13vw, 4.2rem);
+    line-height: .94;
+  }
+
+  .hero-dek {
+    max-width: 88%;
+  }
+
+  .hero-footnotes {
+    margin-top: 24px;
+  }
+
+  .story-stamp {
+    position: static;
+    width: 74px;
+    height: 74px;
+    margin-top: 18px;
+    transform: rotate(-4deg);
+  }
+
+  .photo-caption {
+    position: static;
+    display: block;
+    margin-top: 10px;
+    text-align: right;
+    line-height: 1.4;
+  }
+
+  .story-photo-wrap {
+    padding-bottom: 0;
+  }
+
+  .beer-detail {
+    gap: .8rem;
+    padding: 16px 12px;
+  }
+
+  .kitchen-photo-wrap {
+    margin-left: 0;
+  }
+
+  .kitchen-note {
+    position: relative;
+    left: auto;
+    bottom: auto;
+    width: min(210px, calc(100% - 24px));
+    margin: -26px 0 0 12px;
+    padding: 14px 16px;
+    transform: rotate(-2deg);
+  }
+
+  .footer-main {
+    gap: 16px;
+  }
+
+  .footer-line {
+    font-size: clamp(2.25rem, 11vw, 3rem);
+    line-height: .95;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 17px;
+  }
+
+  .menu-highlight {
+    min-width: 0;
+    grid-template-columns: 26px minmax(0, 1fr) 18px;
+  }
+
+  .menu-highlight > div {
+    min-width: 0;
+  }
+
+  .menu-highlight p {
+    overflow-wrap: anywhere;
+  }
+
+  .gallery-card--1,
+  .gallery-card--2,
+  .gallery-card--3,
+  .gallery-card--4 {
+    grid-column: 1 / -1;
+    grid-row: auto;
+    min-height: 230px;
+  }
+
+  .gallery-card--1 {
+    min-height: 300px;
+  }
+
+  .corporate-card,
+  .corporate-card img {
+    min-height: 260px;
+  }
+
+  .corporate-card > div {
+    right: 16px;
+    bottom: 16px;
+    left: 16px;
+  }
+
+  .about-section__body {
+    padding-top: 1.5rem;
+  }
+
+  .journey-head {
+    gap: 16px;
+  }
+
+  .journey-head h2 {
+    margin-top: 14px;
+    font-size: clamp(2.65rem, 12vw, 4rem);
+    line-height: 1;
+  }
+
+  .journey-head > p {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .journey-grid {
+    margin-top: 2rem;
+    box-shadow: 5px 5px 0 rgba(74,44,24,.08);
+  }
+
+  .journey-map {
+    min-height: 410px;
+  }
+
+  .journey-map__topline {
+    top: 16px;
+    left: 16px;
+    right: 16px;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 7px;
+    line-height: 1.3;
+  }
+
+  .journey-map__topline strong {
+    font-size: 7px;
+  }
+
+  .journey-map__north {
+    top: 16px;
+    right: 16px;
+  }
+
+  .journey-stop {
+    gap: 6px;
+    max-width: 105px;
+    font-size: 7px;
+    line-height: 1.15;
+    letter-spacing: .06em;
+  }
+
+  .journey-stop__label {
+    max-width: 78px;
+  }
+
+  .journey-stop--start {
+    left: 7%;
+    top: 31%;
+  }
+
+  .journey-stop--active {
+    left: 35%;
+    top: 57%;
+  }
+
+  .journey-stop--end {
+    right: 6%;
+    top: 27%;
+  }
+
+  .journey-map__traveller {
+    left: 48%;
+    top: 45%;
+    width: 32px;
+    height: 32px;
+    animation: none;
+  }
+
+  .journey-map__traveller-label {
+    display: none;
+  }
+
+  .journey-map__step {
+    font-size: 6px;
+    letter-spacing: .06em;
+  }
+
+  .journey-map__step span {
+    width: 18px;
+    height: 18px;
+    font-size: 7px;
+  }
+
+  .journey-map__step--one {
+    left: 12%;
+    top: 76%;
+  }
+
+  .journey-map__step--two {
+    left: 55%;
+    top: 34%;
+  }
+
+  .journey-map__route {
+    display: none;
+  }
+
+  .journey-map__note {
+    left: 16px;
+    right: 16px;
+    bottom: 14px;
+    max-width: none;
+    font-size: 10px;
+    line-height: 1.45;
+  }
+
+  .journey-panel {
+    padding: 1.6rem 1rem 1.25rem;
+  }
+
+  .journey-panel h3 {
+    font-size: clamp(2rem, 10vw, 3.2rem);
+  }
+
+  .journey-panel > p {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .journey-facts {
+    margin: 22px 0 20px;
+  }
+
+  .journey-facts > div {
+    padding: 11px 0;
+  }
+
+  .journey-actions .button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 420px) {
+  .hero-actions .button {
+    max-width: 100%;
+  }
+
+  .hero-footnotes {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 7px;
+  }
+
+  .hero-footnotes span + span {
+    padding-left: 0;
+  }
+
+  .hero-footnotes span + span::before {
+    display: none;
+  }
+
+  .beer-row__button {
+    grid-template-columns: 34px minmax(0, 1fr) 24px;
+    gap: 9px;
+  }
+
+  .beer-number {
+    font-size: 18px;
+  }
+
+  .beer-meta strong {
+    font-size: clamp(1.45rem, 8vw, 2.1rem);
+  }
+
+  .beer-detail {
+    grid-template-columns: 68px minmax(0, 1fr);
+  }
+
+  .beer-glass {
+    transform: scale(.62) perspective(200px) rotateY(-8deg);
+    transform-origin: top left;
+  }
+
+  .mobile-menu__links button {
+    font-size: clamp(1.35rem, 7vw, 2rem);
+  }
+
+  .mobile-menu__footer .button {
+    width: 100%;
+  }
+
+  .journey-map {
+    min-height: 390px;
+  }
+
+  .journey-map__step {
+    display: none;
+  }
+
+  .journey-stop--active {
+    left: 30%;
+    top: 60%;
+  }
+
+  .journey-map__traveller {
+    left: 51%;
+    top: 45%;
+  }
+
+  .journey-panel {
+    padding-left: .9rem;
+    padding-right: .9rem;
+  }
+}
