@@ -5,7 +5,7 @@
   honey wood #dfb170, warm cream #f5ecdc, wood varnish #a6712e. One distinctive
   display family, one humanist body family, offset frames, and tactile motion.
 */
-@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Doto:wght@500;600;700&family=Germania+One&family=Manrope:wght@400;500;600;700;800&family=Rye&display=swap");
 @import "tailwindcss";
 @import "./styles/part1.css";
 @import "./styles/part2.css";
@@ -888,4 +888,88 @@ h2 em,
   .story-stamp {
     box-shadow: 5px 5px 0 rgba(230,185,44,.32);
   }
+}
+
+
+/* Brand typography system */
+:root {
+  --font-primary: "Rye", serif;
+  --font-secondary: "Germania One", system-ui;
+  --font-body-brand: "Cormorant Garamond", serif;
+  --font-accent: "Doto", monospace;
+}
+
+.wordmark__name,
+.hero-title,
+.story-heading h2,
+.tap-header h2,
+.kitchen-copy h2,
+.menu-section__head h2,
+.gallery-section__head h2,
+.corporate-copy h2,
+.about-section__head h2,
+.journey-head h2,
+.journey-panel h3,
+.footer-line {
+  font-family: var(--font-primary);
+  letter-spacing: .015em;
+}
+
+.hero-title em,
+.story-heading h2 span,
+.tap-header h2 em,
+.kitchen-copy h2 em,
+.menu-section__head h2 em,
+.gallery-section__head h2 em,
+.corporate-copy h2 em,
+.about-section__head h2 em,
+.journey-head h2 em,
+.footer-line em {
+  font-family: var(--font-secondary);
+  font-style: normal;
+}
+
+.hero-dek,
+.story-copy,
+.kitchen-copy p,
+.menu-section__head > p,
+.gallery-section__head > p,
+.corporate-copy > p,
+.about-section__body,
+.journey-head > p,
+.journey-panel > p {
+  font-family: var(--font-body-brand);
+}
+
+.section-kicker,
+.eyebrow,
+.route-trace,
+.photo-index,
+.photo-caption,
+.desktop-nav button,
+.nav-book,
+.button,
+.beer-number,
+.beer-meta small,
+.beer-stats,
+.beer-status,
+.detail-label,
+.tap-board-meta,
+.brand-board__tile small,
+.brand-board__tile strong,
+.ticker__track,
+.journey-facts span,
+.footer-bottom {
+  font-family: var(--font-accent);
+}
+
+.desktop-nav button,
+.nav-book,
+.button,
+.section-kicker,
+.eyebrow,
+.route-trace,
+.beer-status,
+.brand-board__tile small {
+  letter-spacing: .06em;
 }
