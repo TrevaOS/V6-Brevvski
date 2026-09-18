@@ -136,7 +136,7 @@ export default function Home() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [bookingOpen, setBookingOpen] = useState(false);
-  const [activeBeer, setActiveBeer] = useState(0);
+  const [activeBeer, setActiveBeer] = useState(-1);
   const [submitted, setSubmitted] = useState(false);
   const [guestOption, setGuestOption] = useState("2");
   const [path, setPath] = useState(() => window.location.pathname || "/");
@@ -387,7 +387,23 @@ export default function Home() {
                     <span className={`beer-status beer-status--${beer.status}`}><span className={`status-dot status-dot--${beer.status}`} />{beer.statusLabel}</span>
                     <span className="beer-arrow"><ChevronDown size={18} /></span>
                   </button>
-                  {isActive && <div className="beer-detail" id={`beer-detail-${index}`}><div className="beer-glass" style={{ "--beer-color": beer.color } as React.CSSProperties}><div className="beer-glass__foam" /><div className="beer-glass__liquid" /><div className="beer-glass__shine" /></div><div className="beer-detail__copy"><div className="detail-label">House pour · 330 ml</div><p>{beer.note}</p><div className="detail-pair"><span>Pairs with</span><strong>{beer.pair}</strong></div></div></div>}
+                  {isActive && (
+                    <div className="beer-detail beer-detail--compact" id={`beer-detail-${index}`}>
+                      <div className="beer-detail__accent" style={{ "--beer-color": beer.color } as React.CSSProperties}>
+                        <span className="beer-detail__route">{beer.number}</span>
+                        <span className="beer-detail__swatch" />
+                      </div>
+                      <div className="beer-detail__copy">
+                        <div className="detail-label">House pour · 330 ml</div>
+                        <p>{beer.note}</p>
+                        <div className="beer-detail__facts">
+                          <div><span>ABV</span><strong>{beer.abv}</strong></div>
+                          <div><span>IBU</span><strong>{beer.ibu}</strong></div>
+                          <div><span>Pairs with</span><strong>{beer.pair}</strong></div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </div>
               );
             })}
@@ -403,7 +419,17 @@ export default function Home() {
 
         {currentPath === "/menu" && (
         <section id="menu" className="menu-section section-pad page-pad standalone-section">
-          <div className="menu-section__head" data-reveal="fade-up"><div><div className="section-kicker">Platform 06 / The menu</div><h2>Good food.<br /><em>No ceremony.</em></h2></div><p>Shareable plates, smoky edges, and enough room on the table for another pint.</p></div>
+          <div className="menu-section__head" data-reveal="fade-up">
+            <div>
+              <div className="section-kicker">Platform 06 / The menu</div>
+              <h2>Good food.<br /><em>NO CEREMONY.</em></h2>
+            </div>
+            <aside className="menu-section__intro">
+              <span>The table / Majestic</span>
+              <p>Shareable plates, smoky edges, and enough room on the table for another pint.</p>
+              <strong>Kitchen open · 12 PM to late</strong>
+            </aside>
+          </div>
           <div className="menu-highlights" role="list">
             {menuHighlights.map(([label, description], index) => <div className="menu-highlight" role="listitem" key={label}><span>0{index + 1}</span><div><strong>{label}</strong><p>{description}</p></div><ArrowUpRight size={17} /></div>)}
           </div>
