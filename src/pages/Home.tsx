@@ -25,7 +25,7 @@ import { toast } from "sonner";
 
 const assets = {
   hero: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663890199501/tgCbAxodNakGJDLG.jpg",
-  mark: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663890199501/IOaaJgrMjOTsgTtg.png",
+  mark: "/v6-logo.webp",
   pour: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663890199501/kgMofEYkZaiXdMoz.jpg",
   food: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663890199501/WHWcautirhsaTBxT.jpg",
   interior: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663890199501/aedIRbbuwjPIvZid.jpg",
