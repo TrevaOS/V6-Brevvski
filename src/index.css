@@ -973,3 +973,634 @@ h2 em,
 .brand-board__tile small {
   letter-spacing: .06em;
 }
+
+
+/* Dev polish: visibility, secondary palette, and booking fixes */
+:root {
+  --brand-yellow: #E6B92C;
+  --brand-charcoal: #17191A;
+  --brand-brown: #3A251D;
+  --brand-cream: #F0E5CF;
+  --brand-orange: #A65F2C;
+  --brand-red: #81252A;
+  --brand-green: #31543A;
+  --brand-grey: #707477;
+  --brand-coral: #E4574F;
+  --brand-lime: #62C554;
+}
+
+/* Improve legibility: Doto stays as an accent, not the primary reading font */
+.section-kicker,
+.eyebrow,
+.route-trace,
+.photo-index,
+.photo-caption,
+.desktop-nav button,
+.nav-book,
+.button,
+.beer-number,
+.beer-meta small,
+.beer-stats,
+.beer-status,
+.detail-label,
+.tap-status-strip,
+.brand-board__tile small,
+.brand-board__tile strong,
+.ticker__track,
+.journey-facts span,
+.footer-bottom {
+  font-family: "Manrope", sans-serif;
+}
+
+.ticker__track,
+.tap-status-strip small,
+.brand-board__tile small {
+  font-family: var(--font-accent);
+}
+
+.section-kicker,
+.eyebrow,
+.route-trace,
+.photo-index,
+.photo-caption,
+.beer-meta small,
+.beer-stats,
+.beer-status,
+.detail-label {
+  font-size: 10px;
+  line-height: 1.35;
+  letter-spacing: .08em;
+}
+
+.section-kicker,
+.eyebrow,
+.route-trace,
+.photo-index,
+.photo-caption {
+  font-weight: 800;
+}
+
+.story-section .section-kicker,
+.story-section .route-trace,
+.story-section .photo-index {
+  color: #8B4C28;
+}
+
+.story-section .route-trace {
+  margin-top: 18px;
+}
+
+.story-heading {
+  padding-top: 18px;
+}
+
+.story-heading h2 {
+  max-width: 980px;
+}
+
+.story-stamp {
+  right: 3%;
+  top: 16%;
+  width: 92px;
+  height: 112px;
+  transform: rotate(-4deg);
+  z-index: 2;
+}
+
+.story-stamp::after {
+  inset: 6px;
+}
+
+.story-copy,
+.story-copy p,
+.story-copy .lead-copy {
+  color: #321F16;
+}
+
+.story-copy .lead-copy {
+  font-weight: 600;
+}
+
+.text-link {
+  color: #241914;
+  border-bottom-color: rgba(36,25,20,.7);
+  font-weight: 800;
+}
+
+/* Richer secondary palette across sections */
+.story-section {
+  background:
+    radial-gradient(circle at 86% 16%, rgba(166,95,44,.18), transparent 25%),
+    radial-gradient(circle at 10% 82%, rgba(49,84,58,.08), transparent 20%),
+    var(--brand-cream);
+}
+
+.kitchen-section {
+  background:
+    radial-gradient(circle at 90% 15%, rgba(228,87,79,.10), transparent 24%),
+    var(--brand-cream);
+}
+
+.menu-section {
+  background:
+    radial-gradient(circle at 12% 12%, rgba(98,197,84,.07), transparent 24%),
+    var(--brand-cream);
+}
+
+.corporate-section {
+  background:
+    radial-gradient(circle at 86% 10%, rgba(49,84,58,.11), transparent 24%),
+    var(--brand-cream);
+}
+
+.gallery-section {
+  background:
+    radial-gradient(circle at 10% 10%, rgba(166,95,44,.18), transparent 22%),
+    radial-gradient(circle at 90% 88%, rgba(129,37,42,.16), transparent 28%),
+    linear-gradient(145deg, #17191A, #25201B 58%, #3A251D);
+}
+
+.about-section {
+  background:
+    radial-gradient(circle at 80% 15%, rgba(49,84,58,.22), transparent 24%),
+    radial-gradient(circle at 12% 88%, rgba(228,87,79,.10), transparent 24%),
+    linear-gradient(145deg, #17191A, #2D211B 72%, #3A251D);
+}
+
+.visit-section--journey {
+  background:
+    radial-gradient(circle at 87% 10%, rgba(166,95,44,.14), transparent 24%),
+    linear-gradient(120deg, rgba(255,255,255,.24), transparent 42%),
+    var(--brand-cream);
+}
+
+.menu-highlight:nth-child(1) > span { color: var(--brand-orange); }
+.menu-highlight:nth-child(2) > span { color: var(--brand-green); }
+.menu-highlight:nth-child(3) > span { color: var(--brand-red); }
+
+.menu-highlight:nth-child(1) svg { color: var(--brand-orange); }
+.menu-highlight:nth-child(2) svg { color: var(--brand-green); }
+.menu-highlight:nth-child(3) svg { color: var(--brand-red); }
+
+.corporate-card {
+  box-shadow: 12px 12px 0 rgba(49,84,58,.28);
+}
+
+.corporate-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  border-top: 5px solid var(--brand-green);
+  border-right: 5px solid var(--brand-coral);
+}
+
+/* Tap board: readable grouped information instead of thin micro-text */
+.tap-header {
+  align-items: center;
+}
+
+.tap-header h2 {
+  line-height: .95;
+}
+
+.tap-intro {
+  max-width: 330px;
+  color: rgba(240,229,207,.86);
+  font-family: "Manrope", sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.65;
+}
+
+.tap-status-strip {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 110px minmax(220px, 1fr) 150px 150px;
+  gap: 10px;
+  margin-top: 28px;
+}
+
+.tap-status-strip__item {
+  min-width: 0;
+  padding: 14px 16px;
+  border: 1px solid rgba(240,229,207,.14);
+  background: rgba(0,0,0,.20);
+}
+
+.tap-status-strip__item small {
+  display: block;
+  margin-bottom: 6px;
+  color: #D8B773;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: .10em;
+  text-transform: uppercase;
+}
+
+.tap-status-strip__item strong {
+  display: block;
+  color: var(--brand-cream);
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.tap-status-strip__item--platform {
+  background: var(--brand-yellow);
+  border-color: var(--brand-yellow);
+}
+
+.tap-status-strip__item--platform small,
+.tap-status-strip__item--platform strong {
+  color: #17191A;
+}
+
+.tap-status-strip__item--route {
+  border-left: 4px solid var(--brand-orange);
+}
+
+.tap-status-strip__item--next {
+  background: rgba(49,84,58,.36);
+  border-color: rgba(98,197,84,.35);
+}
+
+.tap-status-strip__item--last {
+  background: rgba(129,37,42,.34);
+  border-color: rgba(228,87,79,.35);
+}
+
+.beer-row__button {
+  grid-template-columns: 96px minmax(0, 1fr) 150px 110px 28px;
+  gap: 18px;
+  min-height: 108px;
+}
+
+.beer-number {
+  color: var(--brand-yellow);
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: .02em;
+}
+
+.beer-meta small {
+  color: #D8B773;
+}
+
+.beer-meta strong {
+  color: var(--brand-cream);
+  font-family: var(--font-secondary);
+  font-size: clamp(2rem, 3vw, 3.1rem);
+  line-height: .94;
+}
+
+.beer-stats {
+  justify-content: flex-start;
+  color: var(--brand-cream);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.beer-stats small {
+  color: #D8B773;
+}
+
+.beer-status {
+  min-width: 0;
+  padding: 8px 10px;
+  border: 1px solid currentColor;
+  border-radius: 2px;
+  font-size: 10px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.beer-status--live {
+  color: var(--brand-lime);
+  background: rgba(98,197,84,.08);
+}
+
+.beer-status--next {
+  color: var(--brand-yellow);
+  background: rgba(230,185,44,.08);
+}
+
+.beer-status--sold {
+  color: #F08A8E;
+  background: rgba(129,37,42,.14);
+}
+
+.beer-row__button:hover .beer-meta strong {
+  color: #FFF6E7;
+}
+
+.beer-detail {
+  margin-left: 0;
+  border-left: 4px solid var(--brand-orange);
+}
+
+.tap-footer {
+  color: rgba(240,229,207,.75);
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.tap-footer .text-link {
+  color: var(--brand-yellow);
+  border-bottom-color: rgba(230,185,44,.7);
+}
+
+/* Booking panel redesign */
+.booking-backdrop {
+  align-items: stretch;
+  background:
+    linear-gradient(90deg, rgba(23,25,26,.82), rgba(23,25,26,.62)),
+    rgba(23,25,26,.74);
+}
+
+.booking-panel {
+  width: min(560px, 100%);
+  min-height: 100%;
+  padding: 42px 44px 34px;
+  background:
+    linear-gradient(180deg, rgba(240,229,207,.98), rgba(232,217,191,.98));
+  border-left: 6px solid var(--brand-yellow);
+  color: #241914;
+  overflow-x: hidden;
+}
+
+.booking-close {
+  top: 18px;
+  right: 18px;
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(36,25,20,.18);
+  background: rgba(255,255,255,.24);
+}
+
+.booking-panel .section-kicker {
+  max-width: calc(100% - 56px);
+  color: var(--brand-orange);
+  font-size: 10px;
+}
+
+.booking-panel h2 {
+  max-width: 470px;
+  margin-top: 20px;
+  color: #241914;
+  font-family: var(--font-primary);
+  font-size: clamp(3rem, 5vw, 5rem);
+  line-height: .94;
+  letter-spacing: .01em;
+}
+
+.booking-panel h2 em {
+  display: block;
+  color: var(--brand-orange);
+  font-family: var(--font-secondary);
+}
+
+.booking-intro {
+  max-width: 430px;
+  margin: 18px 0 28px;
+  color: #5B4638;
+  font-family: "Manrope", sans-serif;
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.booking-panel form {
+  gap: 16px;
+}
+
+.booking-panel label {
+  gap: 7px;
+  color: #7A3F22;
+  font-family: "Manrope", sans-serif;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .08em;
+}
+
+.booking-panel input,
+.booking-panel select {
+  min-height: 46px;
+  padding: 10px 12px;
+  border: 1px solid rgba(58,37,29,.20);
+  border-radius: 2px;
+  background: rgba(255,255,255,.28);
+  color: #241914;
+  font-family: "Manrope", sans-serif;
+  font-size: 14px;
+}
+
+.booking-panel input::placeholder {
+  color: rgba(36,25,20,.45);
+}
+
+.booking-panel input:focus,
+.booking-panel select:focus {
+  border-color: var(--brand-orange);
+  outline: 2px solid rgba(166,95,44,.12);
+  outline-offset: 0;
+}
+
+.form-row {
+  grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+  gap: 14px;
+}
+
+.booking-panel form .button {
+  margin-top: 6px;
+  min-height: 50px;
+}
+
+.booking-footnote {
+  margin-top: 16px;
+  color: #6B5544;
+  font-family: "Manrope", sans-serif;
+  font-size: 10px;
+}
+
+.booking-success {
+  padding-top: 54px;
+}
+
+.booking-success p {
+  color: #5B4638;
+}
+
+.success-mark {
+  border-radius: 2px;
+  background: var(--brand-green);
+  color: var(--brand-cream);
+  box-shadow: 6px 6px 0 rgba(49,84,58,.16);
+}
+
+/* Make headers readable before decorative details */
+.hero-title,
+.story-heading h2,
+.tap-header h2,
+.kitchen-copy h2,
+.menu-section__head h2,
+.gallery-section__head h2,
+.corporate-copy h2,
+.about-section__head h2,
+.journey-head h2 {
+  text-wrap: balance;
+}
+
+@media (max-width: 1100px) {
+  .story-stamp {
+    right: 0;
+    top: 10%;
+  }
+
+  .tap-status-strip {
+    grid-template-columns: 100px minmax(200px, 1fr) 130px 130px;
+  }
+
+  .beer-row__button {
+    grid-template-columns: 84px minmax(0, 1fr) 130px 100px 26px;
+    gap: 14px;
+  }
+}
+
+@media (max-width: 800px) {
+  .story-heading {
+    padding-top: 8px;
+  }
+
+  .story-stamp {
+    position: static;
+    width: 96px;
+    height: 104px;
+    margin-top: 20px;
+  }
+
+  .tap-status-strip {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .beer-row__button {
+    grid-template-columns: 72px minmax(0, 1fr) 92px 24px;
+  }
+
+  .beer-status {
+    grid-column: 2 / 4;
+    justify-self: start;
+    margin-top: -8px;
+  }
+
+  .beer-arrow {
+    grid-column: 4;
+    grid-row: 1;
+  }
+}
+
+@media (max-width: 600px) {
+  .section-kicker,
+  .eyebrow,
+  .route-trace,
+  .photo-index,
+  .photo-caption {
+    font-size: 9px;
+  }
+
+  .story-heading h2 {
+    font-size: clamp(2.8rem, 13vw, 4.3rem);
+  }
+
+  .tap-header h2 {
+    font-size: clamp(2.9rem, 13vw, 4.2rem);
+  }
+
+  .tap-intro {
+    margin-top: 20px;
+    font-size: 13px;
+  }
+
+  .tap-status-strip {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .tap-status-strip__item {
+    padding: 12px 14px;
+  }
+
+  .beer-row__button {
+    grid-template-columns: 56px minmax(0,1fr) 22px;
+    gap: 10px;
+    min-height: 92px;
+  }
+
+  .beer-stats {
+    grid-column: 2;
+    margin-top: -3px;
+    font-size: 10px;
+  }
+
+  .beer-status {
+    grid-column: 2;
+    margin-top: 4px;
+  }
+
+  .beer-arrow {
+    grid-column: 3;
+    grid-row: 1 / span 3;
+    align-self: center;
+  }
+
+  .beer-meta strong {
+    font-size: clamp(1.65rem, 9vw, 2.35rem);
+  }
+
+  .beer-detail {
+    margin-left: 0;
+  }
+
+  .booking-panel {
+    width: 100%;
+    min-height: 100dvh;
+    padding: 28px 18px 22px;
+    border-left: 0;
+    border-top: 5px solid var(--brand-yellow);
+  }
+
+  .booking-panel .section-kicker {
+    padding-right: 54px;
+  }
+
+  .booking-panel h2 {
+    max-width: 100%;
+    margin-top: 16px;
+    font-size: clamp(2.5rem, 14vw, 3.8rem);
+    line-height: .96;
+  }
+
+  .booking-intro {
+    max-width: 100%;
+    margin: 14px 0 22px;
+    font-size: 13px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .booking-panel input,
+  .booking-panel select {
+    min-height: 44px;
+  }
+
+  .booking-close {
+    top: 14px;
+    right: 14px;
+  }
+}
