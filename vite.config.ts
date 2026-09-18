@@ -3,7 +3,7 @@ import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "vite";
 
 export default defineConfig({
-  base: "/V6-Brevvski/",
+  base: "/",
   plugins: [react(), tailwindcss()],
   server: {
     host: true,
