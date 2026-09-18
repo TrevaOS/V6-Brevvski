@@ -32,3 +32,17 @@
 .mobile-menu__links button.is-active {
   color: var(--amber);
 }
+
+
+/* Header spacing between brand and navigation */
+@media (min-width: 901px) {
+  .nav-brand {
+    margin-right: clamp(2.25rem, 4vw, 5rem);
+    flex-shrink: 0;
+  }
+
+  .desktop-nav {
+    margin-left: 0;
+    flex: 1 1 auto;
+  }
+}
