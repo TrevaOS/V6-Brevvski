@@ -29,7 +29,7 @@ const assets = {
   pour: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663890199501/kgMofEYkZaiXdMoz.jpg",
   food: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663890199501/WHWcautirhsaTBxT.jpg",
   interior: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663890199501/aedIRbbuwjPIvZid.jpg",
-  property: "/manus-storage/golden-pint-property-reference_258df23d.png",
+  property: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663890199501/aedIRbbuwjPIvZid.jpg",
 };
 
 const beers = [
@@ -113,6 +113,11 @@ export default function Home() {
   const [bookingOpen, setBookingOpen] = useState(false);
   const [activeBeer, setActiveBeer] = useState(0);
   const [submitted, setSubmitted] = useState(false);
+  const [path, setPath] = useState(() => window.location.pathname || "/");
+
+  const normalizedPath = path.replace(/\/+$/, "") || "/";
+  const knownPaths = new Set(["/", ...navItems.map(([, id]) => "/" + id)]);
+  const currentPath = knownPaths.has(normalizedPath) ? normalizedPath : "/";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 30);
@@ -120,6 +125,16 @@ export default function Home() {
     onScroll();
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useEffect(() => {
+    const onPopState = () => setPath(window.location.pathname || "/");
+    window.addEventListener("popstate", onPopState);
+    return () => window.removeEventListener("popstate", onPopState);
+  }, []);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "auto" });
+  }, [currentPath]);
 
   useEffect(() => {
     const revealItems = Array.from(document.querySelectorAll<HTMLElement>("[data-reveal]"));
@@ -144,7 +159,7 @@ export default function Home() {
 
     revealItems.forEach((item) => observer.observe(item));
     return () => observer.disconnect();
-  }, []);
+  }, [currentPath]);
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
@@ -163,8 +178,11 @@ export default function Home() {
     };
   }, [bookingOpen, menuOpen]);
 
-  const jumpTo = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  const navigate = (nextPath: string) => {
+    if (window.location.pathname !== nextPath) {
+      window.history.pushState({}, "", nextPath);
+    }
+    setPath(nextPath);
     setMenuOpen(false);
   };
 
@@ -188,12 +206,12 @@ export default function Home() {
       <div className="grain" aria-hidden="true" />
 
       <header className={`site-nav ${scrolled ? "site-nav--scrolled" : ""}`}>
-        <button type="button" className="nav-brand" onClick={() => jumpTo("top")} aria-label="Back to top">
+        <button type="button" className="nav-brand" onClick={() => navigate("/")} aria-label="Back to top">
           <Wordmark />
         </button>
         <nav className="desktop-nav" aria-label="Primary navigation">
           {navItems.map(([label, id]) => (
-            <button type="button" key={id} onClick={() => jumpTo(id)}>{label}</button>
+            <button type="button" key={id} className={currentPath === "/" + id ? "is-active" : ""} onClick={() => navigate("/" + id)}>{label}</button>
           ))}
         </nav>
         <div className="nav-location"><MapPin size={14} strokeWidth={1.8} /><span>Majestic Bengaluru</span></div>
@@ -216,7 +234,7 @@ export default function Home() {
           <div className="mobile-menu__top"><Wordmark compact /><span>Navigation</span></div>
           <div className="mobile-menu__links">
             {navItems.map(([label, id], index) => (
-              <button type="button" key={id} onClick={() => jumpTo(id)}>
+              <button type="button" key={id} className={currentPath === "/" + id ? "is-active" : ""} onClick={() => navigate("/" + id)}>
                 <span>0{index + 1}</span>{label}<ArrowUpRight size={20} />
               </button>
             ))}
@@ -229,6 +247,8 @@ export default function Home() {
       )}
 
       <main id="main-content">
+        {currentPath === "/" && (
+          <>
         <section id="top" className="hero-section">
           <div className="hero-image" style={{ backgroundImage: `url(${assets.hero})` }} />
           <div className="hero-overlay" />
@@ -238,7 +258,7 @@ export default function Home() {
             <h1 className="hero-title">Brewed for the <em>city in motion.</em></h1>
             <p className="hero-dek">Craft beer, a proper kitchen, and late evenings in the heart of Majestic.</p>
             <div className="hero-actions">
-              <button type="button" className="button button--amber" onClick={() => jumpTo("on-tap")}>See what is pouring <ArrowUpRight size={16} /></button>
+              <button type="button" className="button button--amber" onClick={() => navigate("/on-tap")}>See what is pouring <ArrowUpRight size={16} /></button>
               <button type="button" className="button button--ghost" onClick={openBooking}>Reserve a table <ArrowUpRight size={16} /></button>
             </div>
             <div className="hero-footnotes"><span>21+ only</span><span>Five minutes from the station</span><span>Fresh beer and good food</span></div>
@@ -257,7 +277,11 @@ export default function Home() {
           <div className="ticker__track" aria-hidden="true">Craft <i>✦</i> Beer <i>✦</i> Food <i>✦</i> Good times <i>✦</i> Bengaluru <i>✦</i> Craft <i>✦</i> Beer <i>✦</i> Food <i>✦</i> Good times <i>✦</i> Bengaluru <i>✦</i></div>
         </div>
 
-        <section id="story" className="story-section page-pad section-pad">
+          </>
+        )}
+
+        {currentPath === "/story" && (
+        <section id="story" className="story-section page-pad section-pad standalone-section">
           <div className="section-kicker">01 / The V6 Brewski story</div>
           <div className="route-trace route-trace--story" aria-hidden="true"><span>Majestic / 01</span><i /><span>Arrival</span></div>
           <div className="story-grid">
@@ -266,8 +290,10 @@ export default function Home() {
             <div className="story-copy"><p className="lead-copy">Majestic is where Bengaluru crosses paths. V6 Brewski is the pause between places, poured for the first cold sip after a long commute.</p><p>Our beers are brewed in small batches, on site, with a kitchen that keeps the table moving.</p><button type="button" className="text-link" onClick={() => toast("The V6 Brewski story is being brewed one batch at a time.")}>Read our story <ArrowUpRight size={15} /></button></div>
           </div>
         </section>
+        )}
 
-        <section id="on-tap" className="tap-section section-pad page-pad">
+        {currentPath === "/on-tap" && (
+        <section id="on-tap" className="tap-section section-pad page-pad standalone-section">
           <div className="tap-header" data-reveal="fade-up"><div><div className="section-kicker section-kicker--light">02 / What is pouring</div><h2>Fresh off<br /><em>the brass.</em></h2></div><p className="tap-intro">Four house pours, brewed here and tuned for the city. Open a row for style, strength, and the best plate to pair with it.</p></div>
           <div className="route-trace route-trace--tap" aria-hidden="true"><span>02</span><i /><span>Fresh pours  platform side</span></div>
           <div className="beer-list" role="list">
@@ -288,39 +314,51 @@ export default function Home() {
           </div>
           <div className="tap-footer"><span>More pours rotate weekly</span><button type="button" className="text-link text-link--light" onClick={() => toast("Ask the bar team what is rotating this week.")}>View the full tap list <ArrowUpRight size={15} /></button></div>
         </section>
+        )}
 
-        <section id="kitchen" className="kitchen-section section-pad">
+        {currentPath === "/kitchen" && (
+        <section id="kitchen" className="kitchen-section section-pad standalone-section">
           <div className="page-pad kitchen-grid"><div className="kitchen-copy" data-reveal="fade-up"><div className="section-kicker">03 / The kitchen</div><h2>A table for<br /><em>the whole night.</em></h2><p>Big flavours, honest ingredients, and plates designed for the middle of the table. Bengaluru comfort with a brewery appetite.</p><button type="button" className="button button--dark" onClick={() => toast("Tonight's menu is available at the bar.")}>Open the menu <ArrowUpRight size={16} /></button></div><div className="kitchen-photo-wrap" data-reveal="scale-in" style={{ "--reveal-delay": "120ms" } as React.CSSProperties}><img src={assets.food} alt="Shared craft dining dishes on a dark table" className="kitchen-photo" /><div className="kitchen-note"><span>Tonight's table</span><strong>Smoke  spice<br />and a cold one.</strong></div></div></div>
         </section>
+        )}
 
-        <section id="menu" className="menu-section section-pad page-pad">
+        {currentPath === "/menu" && (
+        <section id="menu" className="menu-section section-pad page-pad standalone-section">
           <div className="menu-section__head" data-reveal="fade-up"><div><div className="section-kicker">04 / The menu</div><h2>Good food.<br /><em>No ceremony.</em></h2></div><p>Shareable plates, smoky edges, and enough room on the table for another pint.</p></div>
           <div className="menu-highlights" role="list">
             {menuHighlights.map(([label, description], index) => <div className="menu-highlight" role="listitem" key={label}><span>0{index + 1}</span><div><strong>{label}</strong><p>{description}</p></div><ArrowUpRight size={17} /></div>)}
           </div>
           <button type="button" className="button button--dark" onClick={() => toast("The full menu is available at the bar.")}>View the full menu <ArrowUpRight size={16} /></button>
         </section>
+        )}
 
-        <section id="gallery" className="gallery-section section-pad page-pad">
+        {currentPath === "/gallery" && (
+        <section id="gallery" className="gallery-section section-pad page-pad standalone-section">
           <div className="gallery-section__head" data-reveal="fade-up"><div><div className="section-kicker section-kicker--light">05 / The gallery</div><h2>See the<br /><em>house glow.</em></h2></div><p>Woven light, warm pours, and a room built for lingering.</p></div>
           <div className="gallery-grid">
             {galleryItems.map((item, index) => <figure className={`gallery-card gallery-card--${index + 1}`} key={item.label} data-reveal="scale-in" style={{ "--reveal-delay": `${index * 60}ms` } as React.CSSProperties}><img src={item.image} alt={item.title} /><figcaption><span>{item.label}</span><strong>{item.title}</strong></figcaption></figure>)}
           </div>
         </section>
+        )}
 
-        <section id="corporate" className="corporate-section section-pad page-pad">
+        {currentPath === "/corporate" && (
+        <section id="corporate" className="corporate-section section-pad page-pad standalone-section">
           <div className="corporate-grid">
             <div className="corporate-copy" data-reveal="fade-up"><div className="section-kicker">06 / Corporate tables</div><h2>Bring the<br /><em>whole room.</em></h2><p>Team dinners, offsites, launches, and the kind of meetings that deserve a better table. We make room for groups with good taste and a little time.</p><button type="button" className="button button--dark" onClick={() => toast("Corporate enquiries are ready to connect to your events partner.")}>Plan a group evening <ArrowUpRight size={16} /></button></div>
             <div className="corporate-card" data-reveal="scale-in"><img src={assets.interior} alt="V6 Brewski bar interior prepared for a group evening" /><div><span>Group dining / Majestic</span><strong>One table.<br />Many reasons.</strong></div></div>
           </div>
         </section>
+        )}
 
-        <section id="about-us" className="about-section section-pad page-pad">
+        {currentPath === "/about-us" && (
+        <section id="about-us" className="about-section section-pad page-pad standalone-section">
           <div className="about-section__head" data-reveal="fade-up"><div className="section-kicker section-kicker--light">07 / About V6 Brewski</div><h2>Made here.<br /><em>For here.</em></h2></div>
           <div className="about-section__body"><p className="lead-copy">V6 Brewski is a Majestic microbrewery and kitchen built around the pause between places.</p><div><p>We brew in small batches, cook for the middle of the table, and leave enough space for the evening to become its own plan.</p><button type="button" className="text-link text-link--light" onClick={() => toast("The V6 Brewski story is being brewed one batch at a time.")}>Our brewing notes <ArrowUpRight size={15} /></button></div></div>
         </section>
+        )}
 
-        <section id="visit" className="visit-section visit-section--journey section-pad page-pad">
+        {currentPath === "/visit" && (
+        <section id="visit" className="visit-section visit-section--journey section-pad page-pad standalone-section">
           <div className="journey-head" data-reveal>
             <div>
               <div className="section-kicker">08 / Find us</div>
@@ -365,8 +403,9 @@ export default function Home() {
             </aside>
           </div>
         </section>
+        )}
 
-        <footer className="site-footer page-pad"><div className="footer-main"><Wordmark /><div className="footer-line">Brewed. Poured. Lived.<br /><em>Majestically.</em></div><div className="footer-social"><a href="https://www.instagram.com/" target="_blank" rel="noreferrer" aria-label="V6 Brewski Brewery on Instagram"><Instagram size={19} /></a><a href="#visit" aria-label="Find V6 Brewski Brewery" onClick={(event) => { event.preventDefault(); jumpTo("visit") }}><MapPin size={19} /></a></div></div><div className="footer-bottom"><span>© 2026 V6 Brewski Brewery. All rights reserved.</span><span>21+ only  Drink responsibly</span><span>Majestic Bengaluru</span></div></footer>
+        <footer className="site-footer page-pad"><div className="footer-main"><Wordmark /><div className="footer-line">Brewed. Poured. Lived.<br /><em>Majestically.</em></div><div className="footer-social"><a href="https://www.instagram.com/" target="_blank" rel="noreferrer" aria-label="V6 Brewski Brewery on Instagram"><Instagram size={19} /></a><a href="/visit" aria-label="Find V6 Brewski Brewery" onClick={(event) => { event.preventDefault(); navigate("/visit") }}><MapPin size={19} /></a></div></div><div className="footer-bottom"><span>© 2026 V6 Brewski Brewery. All rights reserved.</span><span>21+ only  Drink responsibly</span><span>Majestic Bengaluru</span></div></footer>
       </main>
 
       {bookingOpen && <div className="booking-backdrop" role="presentation" onClick={() => setBookingOpen(false)}><aside className="booking-panel" role="dialog" aria-modal="true" aria-labelledby="booking-title" onClick={(event) => event.stopPropagation()}><button type="button" className="booking-close" onClick={() => setBookingOpen(false)} aria-label="Close booking"><X size={20} /></button>{submitted ? <div className="booking-success"><div className="success-mark"><Check size={22} /></div><div className="section-kicker">Request received</div><h2 id="booking-title">Your table<br /><em>is on the way.</em></h2><p>Your reservation details are ready for handoff to the booking partner.</p><button type="button" className="button button--amber" onClick={() => setBookingOpen(false)}>Back to the site <ArrowRight size={16} /></button></div> : <><div className="section-kicker">A seat at the bar</div><h2 id="booking-title">Save your<br /><em>golden hour.</em></h2><p className="booking-intro">Tell us when you are arriving and we will hold the good table.</p><form onSubmit={submitBooking}><label htmlFor="booking-name">Name<input id="booking-name" name="name" autoComplete="name" required placeholder="Your name" /></label><div className="form-row"><label htmlFor="booking-date">Date<input id="booking-date" name="date" required type="date" /></label><label htmlFor="booking-guests">Guests<select id="booking-guests" name="guests" defaultValue="2"><option value="2">2 guests</option><option value="3">3 guests</option><option value="4">4 guests</option><option value="5">5 or more guests</option></select></label></div><label htmlFor="booking-phone">Mobile number<input id="booking-phone" name="phone" autoComplete="tel" required type="tel" placeholder="+91" /></label><button className="button button--amber button--wide" type="submit">Request a table <ArrowUpRight size={16} /></button></form><p className="booking-footnote"><CalendarDays size={14} /> Tuesday to Sunday 12 PM to 1 AM</p></>}</aside></div>}
