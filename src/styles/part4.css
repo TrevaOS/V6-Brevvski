@@ -14,7 +14,7 @@
 .success-mark { display: grid; place-items: center; width: 46px; height: 46px; margin-bottom: 25px; background: var(--amber); border-radius: 50%; color: var(--espresso); }
 .booking-success p { color: #6e5640; font-size: 14px; line-height: 1.7; margin: 26px 0 30px; }
 
-/* V6 Brewski Timber House: tall crate-label display type, warm hospitality, and a tactile editorial signature. */
+/* V6 Brevvski Timber House: tall crate-label display type, warm hospitality, and a tactile editorial signature. */
 :root { --font-display: "Bebas Neue", sans-serif; --font-body: "Manrope", sans-serif; }
 body { font-family: var(--font-body); }
 .wordmark__name, .hero-title, .hero-title em, h2, h2 em, h3, .story-heading h2 span, .beer-meta strong, .kitchen-note strong, .visit-card h3, .footer-line, .footer-line em, .mobile-menu__links button, .booking-panel h2 { font-family: var(--font-display); }
