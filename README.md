@@ -1,6 +1,6 @@
-# V6 Brewski
+# V6 Brevvski
 
-React + TypeScript + Vite implementation of the V6 Brewski website.
+React + TypeScript + Vite implementation of the V6 Brevvski website.
 
 ## Run locally
 
