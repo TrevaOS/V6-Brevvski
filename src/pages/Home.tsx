@@ -1,5 +1,5 @@
 /*
-  STYLE REMINDER — V6 Brewski Timber House.
+  STYLE REMINDER — V6 Brevvski Timber House.
   Warm timber hospitality for Majestic: deep walnut, honey wood, golden-wood light,
   framed editorial photography, offset layouts, and tactile motion.
   Keep the graphic language confident and material rather than flat brown.
@@ -125,7 +125,7 @@ function Wordmark({ compact = false }: { compact?: boolean }) {
     <div className={`wordmark ${compact ? "wordmark--compact" : ""}`}>
       <img src={assets.mark} alt="" className="wordmark__mark" />
       <div>
-        <div className="wordmark__name">V6 Brewski</div>
+        <div className="wordmark__name">V6 Brevvski</div>
         <div className="wordmark__sub">Majestic Bengaluru</div>
       </div>
     </div>
@@ -329,7 +329,7 @@ export default function Home() {
           <div className="hero-content page-pad">
             <div className="eyebrow eyebrow--light"><span className="eyebrow__line" />Platform 06 · Majestic</div>
             <h1 className="hero-title">Brewed for the <em>city in motion.</em></h1>
-            <p className="hero-dek">V6 Brewski — bold brews, a proper kitchen, and late evenings at the Majestic exchange.</p>
+            <p className="hero-dek">V6 Brevvski — bold brews, a proper kitchen, and late evenings at the Majestic exchange.</p>
             <div className="hero-actions">
               <button type="button" className="button button--amber" onClick={() => navigateToSection("on-tap")}>Now pouring <ArrowUpRight size={16} /></button>
               <button type="button" className="button button--ghost" onClick={openBooking}>Reserve a table <ArrowUpRight size={16} /></button>
@@ -340,10 +340,10 @@ export default function Home() {
           <div className="hero-scroll"><span>Scroll to explore</span><ArrowDownRight size={18} /></div>
         </section>
 
-        <section className="brand-board page-pad" aria-label="V6 Brewski route board">
+        <section className="brand-board page-pad" aria-label="V6 Brevvski route board">
           <div className="brand-board__tile brand-board__tile--platform"><small>Platform</small><strong>06</strong></div>
           <div className="brand-board__tile"><small>Route</small><strong>V6-01</strong></div>
-          <div className="brand-board__tile brand-board__tile--destination"><small>Destination</small><strong>Majestic → V6 Brewski</strong></div>
+          <div className="brand-board__tile brand-board__tile--destination"><small>Destination</small><strong>Majestic → V6 Brevvski</strong></div>
           <div className="brand-board__tile brand-board__tile--live"><small>Arrival</small><strong><span className="status-dot status-dot--live" /> Live</strong></div>
         </section>
 
@@ -358,12 +358,12 @@ export default function Home() {
         </div>
 
         <section id="story" className="story-section page-pad section-pad">
-          <div className="section-kicker">The V6 Brewski story</div>
-          <div className="route-trace route-trace--story" aria-hidden="true"><span>Majestic</span><i /><span>V6 Brewski</span></div>
+          <div className="section-kicker">The V6 Brevvski story</div>
+          <div className="route-trace route-trace--story" aria-hidden="true"><span>Majestic</span><i /><span>V6 Brevvski</span></div>
           <div className="story-grid">
-            <div className="story-heading" data-reveal="fade-up"><h2>Brewed in the <span>middle</span><br /> of it.</h2><div className="story-stamp">V6<br />Brewski<br /><strong>06</strong><br />Platform</div></div>
+            <div className="story-heading" data-reveal="fade-up"><h2>Brewed in the <span>middle</span><br /> of it.</h2><div className="story-stamp">V6<br />Brevvski<br /><strong>06</strong><br />Platform</div></div>
             <div className="story-photo-wrap"><div className="photo-index">The room</div><img src={assets.property} alt="Warm timber brewery interior with woven pendant lamps and a glowing bar" className="story-photo" /><div className="photo-caption">The light, timber, and brass that set the house tone.</div></div>
-            <div className="story-copy"><p className="lead-copy">Majestic is where Bengaluru crosses paths. V6 Brewski is the pause between places, poured for the first cold sip after a long commute.</p><p>Our beers are brewed in small batches, on site, with a kitchen that keeps the table moving.</p><button type="button" className="text-link" onClick={() => toast("The V6 Brewski story is being brewed one batch at a time.")}>Read our story <ArrowUpRight size={15} /></button></div>
+            <div className="story-copy"><p className="lead-copy">Majestic is where Bengaluru crosses paths. V6 Brevvski is the pause between places, poured for the first cold sip after a long commute.</p><p>Our beers are brewed in small batches, on site, with a kitchen that keeps the table moving.</p><button type="button" className="text-link" onClick={() => toast("The V6 Brevvski story is being brewed one batch at a time.")}>Read our story <ArrowUpRight size={15} /></button></div>
           </div>
         </section>
 
@@ -450,7 +450,7 @@ export default function Home() {
         <section id="corporate" className="corporate-section section-pad page-pad standalone-section">
           <div className="corporate-grid">
             <div className="corporate-copy" data-reveal="fade-up"><div className="section-kicker">Route / Corporate tables</div><h2>Bring the<br /><em>whole room.</em></h2><p>Team dinners, offsites, launches, and the kind of meetings that deserve a better table. We make room for groups with good taste and a little time.</p><button type="button" className="button button--dark" onClick={() => toast("Corporate enquiries are ready to connect to your events partner.")}>Plan a group evening <ArrowUpRight size={16} /></button></div>
-            <div className="corporate-card" data-reveal="scale-in"><img src={assets.interior} alt="V6 Brewski bar interior prepared for a group evening" /><div><span>Group dining / Majestic</span><strong>One table.<br />Many reasons.</strong></div></div>
+            <div className="corporate-card" data-reveal="scale-in"><img src={assets.interior} alt="V6 Brevvski bar interior prepared for a group evening" /><div><span>Group dining / Majestic</span><strong>One table.<br />Many reasons.</strong></div></div>
           </div>
         </section>
         )}
@@ -459,20 +459,20 @@ export default function Home() {
         <section id="about-us" className="about-section section-pad page-pad standalone-section">
           <div className="about-section__hero" data-reveal="fade-up">
             <div className="about-section__head">
-              <div className="section-kicker section-kicker--light">Brand / About V6 Brewski</div>
+              <div className="section-kicker section-kicker--light">Brand / About V6 Brevvski</div>
               <h2>Made here.<br /><em>For here.</em></h2>
             </div>
             <aside className="about-section__intro-card">
-              <div className="about-section__mark-wrap"><img src={assets.mark} alt="V6 Brewski The Exchange emblem" /></div>
+              <div className="about-section__mark-wrap"><img src={assets.mark} alt="V6 Brevvski The Exchange emblem" /></div>
               <div>
                 <span className="about-section__eyebrow">The Exchange · Majestic</span>
                 <p>We brew in small batches, cook for the middle of the table, and make room for the evening to become its own plan.</p>
-                <button type="button" className="about-cta" onClick={() => toast("The V6 Brewski story is being brewed one batch at a time.")}>Our brewing notes <ArrowUpRight size={15} /></button>
+                <button type="button" className="about-cta" onClick={() => toast("The V6 Brevvski story is being brewed one batch at a time.")}>Our brewing notes <ArrowUpRight size={15} /></button>
               </div>
             </aside>
           </div>
           <div className="about-section__body">
-            <p className="lead-copy">V6 Brewski is a Majestic microbrewery and kitchen built around the pause between places.</p>
+            <p className="lead-copy">V6 Brevvski is a Majestic microbrewery and kitchen built around the pause between places.</p>
             <div className="about-section__detail">
               <span>Beer · Kitchen · The Exchange</span>
               <p>Rooted in Majestic, the house brings brewing, food and the energy of Bengaluru into one warm stop before or after the journey.</p>
@@ -492,7 +492,7 @@ export default function Home() {
           </div>
 
           <div className="journey-grid" data-reveal="scale-in" style={{ "--reveal-delay": "120ms" } as React.CSSProperties}>
-            <div className="journey-map" role="img" aria-label="Stylised route from Majestic station to V6 Brewski Brewery in Bengaluru">
+            <div className="journey-map" role="img" aria-label="Stylised route from Majestic station to V6 Brevvski Brewery in Bengaluru">
               <div className="journey-map__wash" aria-hidden="true" />
               <div className="journey-map__grid" aria-hidden="true" />
               <div className="journey-map__topline"><span>Walk this way</span><strong><Footprints size={13} /> 05 min / on foot</strong></div>
@@ -503,7 +503,7 @@ export default function Home() {
               </svg>
               <div className="journey-map__traveller" aria-hidden="true"><span className="journey-map__traveller-halo" /><PersonStanding size={23} strokeWidth={1.8} /><span className="journey-map__traveller-label">You are here</span></div>
               <div className="journey-stop journey-stop--start"><span className="journey-stop__dot" /><span className="journey-stop__label">Majestic<br /><small>Station</small></span></div>
-              <div className="journey-stop journey-stop--active"><span className="journey-stop__dot"><MapPin size={13} /></span><span className="journey-stop__label">V6 Brewski<br /><small>Five min walk</small></span></div>
+              <div className="journey-stop journey-stop--active"><span className="journey-stop__dot"><MapPin size={13} /></span><span className="journey-stop__label">V6 Brevvski<br /><small>Five min walk</small></span></div>
               <div className="journey-stop journey-stop--end"><span className="journey-stop__dot" /><span className="journey-stop__label">Bengaluru<br /><small>City centre</small></span></div>
               <div className="journey-map__step journey-map__step--one"><span>01</span><strong>Station exit</strong></div>
               <div className="journey-map__step journey-map__step--two"><span>02</span><strong>Golden hour</strong></div>
@@ -522,14 +522,14 @@ export default function Home() {
               </div>
               <div className="journey-actions">
                 <button type="button" className="button button--amber button--wide" onClick={openBooking}>Reserve a table <ArrowUpRight size={16} /></button>
-                <a className="directions-link" href="https://maps.google.com/?q=V6+Brewski+Brewery+Majestic+Bengaluru" target="_blank" rel="noreferrer">Get directions <ArrowRight size={15} /></a>
+                <a className="directions-link" href="https://maps.google.com/?q=V6+Brevvski+Brewery+Majestic+Bengaluru" target="_blank" rel="noreferrer">Get directions <ArrowRight size={15} /></a>
               </div>
             </aside>
           </div>
         </section>
         )}
 
-        <footer className="site-footer page-pad"><div className="footer-main"><Wordmark /><div className="footer-line">Brewed. Poured. Lived.<br /><em>Majestically.</em></div><div className="footer-social"><a href="https://www.instagram.com/" target="_blank" rel="noreferrer" aria-label="V6 Brewski Brewery on Instagram"><Instagram size={19} /></a><a href="/visit" aria-label="Find V6 Brewski Brewery" onClick={(event) => { event.preventDefault(); navigate("/visit") }}><MapPin size={19} /></a></div></div><div className="footer-bottom"><span>© 2026 V6 Brewski Brewery. All rights reserved.</span><span>21+ only  Drink responsibly</span><span>Majestic Bengaluru</span></div></footer>
+        <footer className="site-footer page-pad"><div className="footer-main"><Wordmark /><div className="footer-line">Brewed. Poured. Lived.<br /><em>Majestically.</em></div><div className="footer-social"><a href="https://www.instagram.com/" target="_blank" rel="noreferrer" aria-label="V6 Brevvski Brewery on Instagram"><Instagram size={19} /></a><a href="/visit" aria-label="Find V6 Brevvski Brewery" onClick={(event) => { event.preventDefault(); navigate("/visit") }}><MapPin size={19} /></a></div></div><div className="footer-bottom"><span>© 2026 V6 Brevvski Brewery. All rights reserved.</span><span>21+ only  Drink responsibly</span><span>Majestic Bengaluru</span></div></footer>
       </main>
 
       {bookingOpen && <div className="booking-backdrop" role="presentation" onClick={() => setBookingOpen(false)}><aside className="booking-panel" role="dialog" aria-modal="true" aria-labelledby="booking-title" onClick={(event) => event.stopPropagation()}><button type="button" className="booking-close" onClick={() => setBookingOpen(false)} aria-label="Close booking"><X size={20} /></button>{submitted ? <div className="booking-success"><div className="success-mark"><Check size={22} /></div><div className="section-kicker">Reservation received</div><h2 id="booking-title">Arrival<br /><em>confirmed.</em></h2><p>Your table request has been captured and is ready for confirmation.</p><button type="button" className="button button--amber" onClick={() => setBookingOpen(false)}>Back to the site <ArrowRight size={16} /></button></div> : <><div className="section-kicker">Platform 06 / Reservations</div><h2 id="booking-title">Reserve<br /><em>your table.</em></h2><p className="booking-intro">Choose your date, guest count and contact details. We’ll hold the table for your arrival.</p><form onSubmit={submitBooking}><label htmlFor="booking-name">Name<input id="booking-name" name="name" autoComplete="name" required placeholder="Your name" /></label><label htmlFor="booking-email">Email<input id="booking-email" name="email" autoComplete="email" required type="email" placeholder="you@example.com" /></label><div className="form-row"><label htmlFor="booking-date">Date<input id="booking-date" name="date" required type="date" /></label><label htmlFor="booking-guests">Guests<select id="booking-guests" name="guests" value={guestOption} onChange={(event) => setGuestOption(event.target.value)}><option value="2">2 guests</option><option value="3">3 guests</option><option value="4">4 guests</option><option value="5">5 or more guests</option><option value="custom">Custom</option></select></label></div>{guestOption === "custom" && <label htmlFor="booking-custom-guests">Custom guest count<input id="booking-custom-guests" name="customGuests" required type="number" min="1" max="50" inputMode="numeric" placeholder="Enter number of guests" /></label>}<label htmlFor="booking-phone">Mobile number<input id="booking-phone" name="phone" autoComplete="tel" required type="tel" placeholder="+91" /></label><button className="button button--amber button--wide" type="submit">Request a table <ArrowUpRight size={16} /></button></form><p className="booking-footnote"><CalendarDays size={14} /> Tuesday to Sunday 12 PM to 1 AM</p></>}</aside></div>}
