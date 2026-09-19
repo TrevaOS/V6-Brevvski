@@ -20,7 +20,7 @@
 .error-screen__copy { max-width: 410px; color: rgba(246, 239, 226, .7); font-size: 15px; line-height: 1.7; }
 .error-screen__details { max-width: min(760px, 100%); max-height: 180px; overflow: auto; padding: 14px; background: rgba(0, 0, 0, .26); color: rgba(246, 239, 226, .62); font: 11px/1.5 ui-monospace, monospace; white-space: pre-wrap; }
 
-/* Map and journey integration: a light editorial pause inside V6 Brewski Timber House.
+/* Map and journey integration: a light editorial pause inside V6 Brevvski Timber House.
    The route card borrows the supplied concept's story-led planning language while
    keeping V6's brass amber, square geometry, offset framing, and measured motion. */
 .visit-section--journey {
