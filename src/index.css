@@ -2264,7 +2264,7 @@ h2 em,
 /* 3D Majestic route experiment — experiment/3d-journey */
 .journey-map--3d {
   position: relative;
-  min-height: 620px;
+  min-height: 670px;
   overflow: hidden;
   isolation: isolate;
   background:
@@ -2277,8 +2277,20 @@ h2 em,
   inset: 0;
   overflow: hidden;
   background:
-    linear-gradient(180deg, rgba(240,229,207,.12), rgba(58,37,29,.06)),
+    linear-gradient(180deg, rgba(240,229,207,.1), rgba(58,37,29,.07)),
     #d9c49b;
+}
+
+.journey-3d::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(240,229,207,.12), transparent 18%, transparent 74%, rgba(58,37,29,.13)),
+    radial-gradient(circle at 50% 42%, transparent 46%, rgba(58,37,29,.1) 100%);
+  mix-blend-mode: multiply;
 }
 
 .journey-3d__mount {
@@ -2301,7 +2313,7 @@ h2 em,
 
 .journey-3d__chrome {
   position: absolute;
-  z-index: 4;
+  z-index: 5;
   top: 18px;
   left: 18px;
   right: 18px;
@@ -2312,14 +2324,14 @@ h2 em,
   pointer-events: none;
 }
 
-.journey-3d__chrome > div {
+.journey-3d__chrome > div:first-child {
   display: grid;
   gap: 4px;
   padding: 10px 12px 11px;
   border: 1px solid rgba(58,37,29,.2);
-  background: rgba(240,229,207,.86);
+  background: rgba(240,229,207,.9);
   box-shadow: 4px 4px 0 rgba(58,37,29,.08);
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(10px);
 }
 
 .journey-3d__eyebrow {
@@ -2340,37 +2352,83 @@ h2 em,
   text-transform: uppercase;
 }
 
-.journey-3d__chrome button {
+.journey-3d__controls {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 7px;
   pointer-events: auto;
+}
+
+.journey-3d__controls button {
   min-height: 38px;
   padding: 0 13px;
-  border: 1px solid #3a251d;
-  background: rgba(23,25,26,.92);
+  border: 1px solid rgba(58,37,29,.7);
+  background: rgba(23,25,26,.91);
   color: #f0e5cf;
   font-family: "Manrope", sans-serif;
   font-size: 8px;
   font-weight: 800;
-  letter-spacing: .11em;
+  letter-spacing: .1em;
   text-transform: uppercase;
+  backdrop-filter: blur(10px);
   transition: transform .2s ease, background .2s ease, color .2s ease;
 }
 
-.journey-3d__chrome button:hover {
+.journey-3d__controls button:last-child {
+  border-color: #c08b18;
+  background: rgba(230,185,44,.92);
+  color: #17191a;
+}
+
+.journey-3d__controls button:hover {
   transform: translateY(-2px);
   background: #e6b92c;
   color: #17191a;
 }
 
+.journey-3d__shot {
+  position: absolute;
+  z-index: 5;
+  left: 18px;
+  bottom: 18px;
+  display: grid;
+  min-width: 150px;
+  gap: 4px;
+  padding: 9px 11px;
+  border-left: 3px solid #e6b92c;
+  background: rgba(23,25,26,.87);
+  color: #f0e5cf;
+  backdrop-filter: blur(10px);
+  pointer-events: none;
+}
+
+.journey-3d__shot span {
+  color: #d0ae6d;
+  font-family: "Manrope", sans-serif;
+  font-size: 7px;
+  font-weight: 800;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+
+.journey-3d__shot strong {
+  font-family: "Manrope", sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .04em;
+}
+
 .journey-3d__hint {
   position: absolute;
-  z-index: 4;
+  z-index: 5;
   right: 18px;
-  bottom: 16px;
+  bottom: 18px;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
   gap: 6px;
-  max-width: calc(100% - 36px);
+  max-width: calc(100% - 210px);
   pointer-events: none;
 }
 
@@ -2389,7 +2447,7 @@ h2 em,
 
 .journey-3d__fallback {
   position: absolute;
-  z-index: 6;
+  z-index: 7;
   inset: 0;
   display: grid;
   place-content: center;
@@ -2411,53 +2469,91 @@ h2 em,
   font-size: 12px;
 }
 
+@media (max-width: 1100px) {
+  .journey-map--3d {
+    min-height: 610px;
+  }
+
+  .journey-3d__controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
 @media (max-width: 900px) {
   .journey-map--3d {
-    min-height: 520px;
+    min-height: 540px;
   }
 }
 
 @media (max-width: 600px) {
   .journey-map--3d {
-    min-height: 430px;
+    min-height: 455px;
   }
 
   .journey-3d__chrome {
-    top: 12px;
-    left: 12px;
-    right: 12px;
-    gap: 8px;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    gap: 7px;
   }
 
-  .journey-3d__chrome > div {
-    padding: 8px 9px;
+  .journey-3d__chrome > div:first-child {
+    padding: 7px 8px;
+  }
+
+  .journey-3d__eyebrow {
+    font-size: 6px;
   }
 
   .journey-3d__chrome strong {
-    font-size: 14px;
+    font-size: 13px;
   }
 
-  .journey-3d__chrome button {
-    min-height: 34px;
-    padding: 0 9px;
-    font-size: 7px;
+  .journey-3d__controls {
+    gap: 4px;
+  }
+
+  .journey-3d__controls button {
+    min-height: 30px;
+    padding: 0 7px;
+    font-size: 6px;
+    letter-spacing: .07em;
+  }
+
+  .journey-3d__shot {
+    left: 10px;
+    bottom: 10px;
+    min-width: 112px;
+    padding: 7px 8px;
+  }
+
+  .journey-3d__shot span {
+    font-size: 6px;
+  }
+
+  .journey-3d__shot strong {
+    font-size: 8px;
   }
 
   .journey-3d__hint {
-    right: 12px;
-    bottom: 12px;
-    left: 12px;
-    justify-content: flex-start;
-    max-width: none;
+    right: 10px;
+    bottom: 10px;
+    max-width: calc(100% - 145px);
   }
 
   .journey-3d__hint span {
+    display: none;
     font-size: 6px;
+  }
+
+  .journey-3d__hint span:last-child {
+    display: block;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .journey-3d__chrome button {
+  .journey-3d__controls button {
     transition: none;
   }
 }
