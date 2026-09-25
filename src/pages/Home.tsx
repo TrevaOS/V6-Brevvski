@@ -13,15 +13,14 @@ import {
   Check,
   ChevronDown,
   Clock3,
-  Footprints,
   Instagram,
   MapPin,
   Menu,
-  PersonStanding,
   TrainFront,
   X,
 } from "lucide-react";
 import { toast } from "sonner";
+import JourneyScene3D from "../components/JourneyScene3D";
 
 const assets = {
   hero: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663890199501/tgCbAxodNakGJDLG.jpg",
@@ -492,23 +491,8 @@ export default function Home() {
           </div>
 
           <div className="journey-grid" data-reveal="scale-in" style={{ "--reveal-delay": "120ms" } as React.CSSProperties}>
-            <div className="journey-map" role="img" aria-label="Stylised route from Majestic station to V6 Brevvski Brewery in Bengaluru">
-              <div className="journey-map__wash" aria-hidden="true" />
-              <div className="journey-map__grid" aria-hidden="true" />
-              <div className="journey-map__topline"><span>Walk this way</span><strong><Footprints size={13} /> 05 min / on foot</strong></div>
-              <div className="journey-map__north" aria-hidden="true"><span>N</span><ArrowUpRight size={13} /></div>
-              <svg className="journey-map__route-svg" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-                <path className="journey-map__route-shadow" d="M11 67 C25 60 34 65 48 56 S73 39 91 42" />
-                <path className="journey-map__route-dash" d="M11 67 C25 60 34 65 48 56 S73 39 91 42" />
-              </svg>
-              <div className="journey-map__traveller" aria-hidden="true"><span className="journey-map__traveller-halo" /><PersonStanding size={23} strokeWidth={1.8} /><span className="journey-map__traveller-label">You are here</span></div>
-              <div className="journey-stop journey-stop--start"><span className="journey-stop__dot" /><span className="journey-stop__label">Majestic<br /><small>Station</small></span></div>
-              <div className="journey-stop journey-stop--active"><span className="journey-stop__dot"><MapPin size={13} /></span><span className="journey-stop__label">V6 Brevvski<br /><small>Five min walk</small></span></div>
-              <div className="journey-stop journey-stop--end"><span className="journey-stop__dot" /><span className="journey-stop__label">Bengaluru<br /><small>City centre</small></span></div>
-              <div className="journey-map__step journey-map__step--one"><span>01</span><strong>Station exit</strong></div>
-              <div className="journey-map__step journey-map__step--two"><span>02</span><strong>Golden hour</strong></div>
-              <div className="journey-map__route">Kempegowda Road / Majestic</div>
-              <p className="journey-map__note">A short walk from the station.</p>
+            <div className="journey-map journey-map--3d">
+              <JourneyScene3D />
             </div>
 
             <aside className="journey-panel">
