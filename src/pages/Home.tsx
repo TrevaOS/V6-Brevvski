@@ -433,7 +433,7 @@ export default function Home() {
               <iframe
                 className="home-location__map"
                 title="Map showing V6 Brevvski in Majestic, Bengaluru"
-                src="https://www.google.com/maps?q=V6+Brevvski+Brewery+Majestic+Bengaluru&output=embed"
+                src="https://www.google.com/maps?q=No.+27,+K+G+Road,+Gandhinagar,+Bengaluru,+Karnataka+560009&output=embed"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               />
@@ -444,7 +444,7 @@ export default function Home() {
               </div>
               <a
                 className="home-location__map-link"
-                href="https://maps.google.com/?q=V6+Brevvski+Brewery+Majestic+Bengaluru"
+                href="https://maps.app.goo.gl/fbzAdvbpxTWBwXNA6"
                 target="_blank"
                 rel="noreferrer"
               >
@@ -460,7 +460,7 @@ export default function Home() {
               <div className="home-location__facts">
                 <div>
                   <span className="home-location__fact-icon"><MapPin size={18} strokeWidth={1.7} /></span>
-                  <span><small>Neighbourhood</small><strong>Kempegowda Road / Majestic, Bengaluru</strong></span>
+                  <span><small>Address</small><strong>No. 27, K G Road, Gandhinagar, Bengaluru 560009</strong></span>
                 </div>
                 <div>
                   <span className="home-location__fact-icon"><Clock3 size={18} strokeWidth={1.7} /></span>
@@ -589,7 +589,7 @@ export default function Home() {
               </div>
               <div className="journey-actions">
                 <button type="button" className="button button--amber button--wide" onClick={openBooking}>Reserve a table <ArrowUpRight size={16} /></button>
-                <a className="directions-link" href="https://maps.google.com/?q=V6+Brevvski+Brewery+Majestic+Bengaluru" target="_blank" rel="noreferrer">Get directions <ArrowRight size={15} /></a>
+                <a className="directions-link" href="https://maps.app.goo.gl/fbzAdvbpxTWBwXNA6" target="_blank" rel="noreferrer">Get directions <ArrowRight size={15} /></a>
               </div>
             </aside>
           </div>
