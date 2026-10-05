@@ -2816,3 +2816,49 @@ h2 em,
     font-size: 9px;
   }
 }
+
+
+/* Recenter control for the interactive home map. */
+.home-location__recenter {
+  position: absolute;
+  z-index: 5;
+  right: 18px;
+  top: 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 9px 12px;
+  color: var(--espresso);
+  background: rgba(245,236,220,.96);
+  border: 1px solid rgba(74,44,24,.16);
+  box-shadow: 0 8px 24px rgba(36,20,12,.20);
+  cursor: pointer;
+  font: 800 9px/1 "IBM Plex Mono", monospace;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  backdrop-filter: blur(10px);
+  transition: transform .18s var(--ease-out), background .18s ease;
+}
+
+.home-location__recenter:hover {
+  transform: translateY(-2px);
+  background: var(--amber);
+}
+
+.home-location__recenter:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 600px) {
+  .home-location__recenter {
+    top: 12px;
+    right: 12px;
+    min-height: 36px;
+    padding: 8px 10px;
+  }
+
+  .home-location__recenter span {
+    display: none;
+  }
+}
