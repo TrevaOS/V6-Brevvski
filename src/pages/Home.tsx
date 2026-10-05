@@ -433,10 +433,20 @@ export default function Home() {
               <iframe
                 className="home-location__map"
                 title="Map showing V6 Brevvski in Majestic, Bengaluru"
-                src="https://www.google.com/maps?q=No.+27,+K+G+Road,+Gandhinagar,+Bengaluru,+Karnataka+560009&output=embed"
+                src="https://www.google.com/maps?q=V6%20Brevvski%2C%2027%20Kempegowda%20Road%2C%20Gandhinagar%2C%20Bengaluru%20560009&z=18&output=embed"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               />
+              <a
+                className="home-location__pin"
+                href="https://maps.app.goo.gl/fbzAdvbpxTWBwXNA6"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Open the exact V6 Brevvski location in Google Maps"
+              >
+                <span className="home-location__pin-dot"><MapPin size={18} strokeWidth={2.1} /></span>
+                <span><strong>V6 Brevvski</strong><small>No. 27 · K G Road</small></span>
+              </a>
               <div className="home-location__map-stamp" aria-hidden="true">
                 <span>Route</span>
                 <strong>V6</strong>
