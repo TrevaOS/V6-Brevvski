@@ -4,7 +4,9 @@
   framed editorial photography, offset layouts, and tactile motion.
   Keep the graphic language confident and material rather than flat brown.
 */
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import L from "leaflet";
+import "leaflet/dist/leaflet.css";
 import {
   ArrowDownRight,
   ArrowRight,
@@ -107,6 +109,8 @@ const navItems = [
 const homeSectionIds = new Set(["story", "on-tap", "kitchen"]);
 const pageIds = ["menu", "gallery", "corporate", "about-us", "visit"] as const;
 
+const V6_LOCATION: L.LatLngExpression = [12.9755048, 77.5771884];
+
 const galleryItems = [
   { label: "The room", title: "Light over timber", image: assets.property },
   { label: "The pour", title: "Cold, bright, precise", image: assets.pour },
@@ -140,10 +144,50 @@ export default function Home() {
   const [submitted, setSubmitted] = useState(false);
   const [guestOption, setGuestOption] = useState("2");
   const [path, setPath] = useState(() => window.location.pathname || "/");
+  const homeMapRef = useRef<HTMLDivElement | null>(null);
 
   const normalizedPath = path.replace(/\/+$/, "") || "/";
   const knownPaths = new Set(["/", ...pageIds.map((id) => "/" + id)]);
   const currentPath = knownPaths.has(normalizedPath) ? normalizedPath : "/";
+
+  useEffect(() => {
+    if (currentPath !== "/" || !homeMapRef.current) return;
+
+    const map = L.map(homeMapRef.current, {
+      center: V6_LOCATION,
+      zoom: 18,
+      zoomControl: true,
+      scrollWheelZoom: true,
+      dragging: true,
+      touchZoom: true,
+      doubleClickZoom: true,
+      attributionControl: true,
+    });
+
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      maxZoom: 20,
+      attribution: "&copy; OpenStreetMap contributors",
+    }).addTo(map);
+
+    const markerIcon = L.divIcon({
+      className: "v6-leaflet-marker",
+      html: '<div class="v6-leaflet-marker__pin"></div><div class="v6-leaflet-marker__label"><strong>V6 Brevvski</strong><small>No. 27 · K G Road</small></div>',
+      iconSize: [190, 58],
+      iconAnchor: [20, 54],
+      popupAnchor: [74, -48],
+    });
+
+    L.marker(V6_LOCATION, { icon: markerIcon })
+      .addTo(map)
+      .bindPopup("<strong>V6 Brevvski</strong><br />No. 27, K G Road, Gandhinagar, Bengaluru 560009");
+
+    const resizeTimer = window.setTimeout(() => map.invalidateSize(), 80);
+
+    return () => {
+      window.clearTimeout(resizeTimer);
+      map.remove();
+    };
+  }, [currentPath]);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 30);
@@ -426,27 +470,12 @@ export default function Home() {
 
           <div className="home-location__grid" data-reveal="scale-in" style={{ "--reveal-delay": "100ms" } as React.CSSProperties}>
             <div className="home-location__map-shell">
-              <div className="home-location__map-topline">
-                <span>Map / Majestic Bengaluru</span>
-                <strong><Footprints size={13} /> 05 min from the station</strong>
-              </div>
-              <iframe
+              <div
+                ref={homeMapRef}
                 className="home-location__map"
-                title="Map showing V6 Brevvski in Majestic, Bengaluru"
-                src="https://www.google.com/maps?q=V6%20Brevvski%2C%2027%20Kempegowda%20Road%2C%20Gandhinagar%2C%20Bengaluru%20560009&z=18&output=embed"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
+                role="region"
+                aria-label="Interactive map showing V6 Brevvski at No. 27 K G Road, Gandhinagar, Bengaluru"
               />
-              <a
-                className="home-location__pin"
-                href="https://maps.app.goo.gl/fbzAdvbpxTWBwXNA6"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Open the exact V6 Brevvski location in Google Maps"
-              >
-                <span className="home-location__pin-dot"><MapPin size={18} strokeWidth={2.1} /></span>
-                <span><strong>V6 Brevvski</strong><small>No. 27 · K G Road</small></span>
-              </a>
               <div className="home-location__map-stamp" aria-hidden="true">
                 <span>Route</span>
                 <strong>V6</strong>
