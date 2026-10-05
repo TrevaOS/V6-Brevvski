@@ -15,6 +15,7 @@ import {
   Check,
   ChevronDown,
   Clock3,
+  Crosshair,
   Footprints,
   Instagram,
   MapPin,
@@ -110,6 +111,7 @@ const homeSectionIds = new Set(["story", "on-tap", "kitchen"]);
 const pageIds = ["menu", "gallery", "corporate", "about-us", "visit"] as const;
 
 const V6_LOCATION: L.LatLngExpression = [12.9755048, 77.5771884];
+const HOME_MAP_ZOOM = 17;
 
 const galleryItems = [
   { label: "The room", title: "Light over timber", image: assets.property },
@@ -145,6 +147,7 @@ export default function Home() {
   const [guestOption, setGuestOption] = useState("2");
   const [path, setPath] = useState(() => window.location.pathname || "/");
   const homeMapRef = useRef<HTMLDivElement | null>(null);
+  const homeMapInstanceRef = useRef<L.Map | null>(null);
 
   const normalizedPath = path.replace(/\/+$/, "") || "/";
   const knownPaths = new Set(["/", ...pageIds.map((id) => "/" + id)]);
@@ -155,18 +158,23 @@ export default function Home() {
 
     const map = L.map(homeMapRef.current, {
       center: V6_LOCATION,
-      zoom: 18,
+      zoom: HOME_MAP_ZOOM,
       zoomControl: true,
       scrollWheelZoom: true,
       dragging: true,
       touchZoom: true,
       doubleClickZoom: true,
       attributionControl: true,
+      zoomSnap: 0.5,
+      zoomDelta: 0.5,
     });
 
-    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    homeMapInstanceRef.current = map;
+
+    L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", {
       maxZoom: 20,
-      attribution: "&copy; OpenStreetMap contributors",
+      subdomains: "abcd",
+      attribution: "&copy; OpenStreetMap contributors &copy; CARTO",
     }).addTo(map);
 
     const markerIcon = L.divIcon({
@@ -185,6 +193,7 @@ export default function Home() {
 
     return () => {
       window.clearTimeout(resizeTimer);
+      homeMapInstanceRef.current = null;
       map.remove();
     };
   }, [currentPath]);
@@ -288,6 +297,12 @@ export default function Home() {
 
     setMenuOpen(false);
     scrollToSection();
+  };
+
+  const recenterHomeMap = () => {
+    const map = homeMapInstanceRef.current;
+    if (!map) return;
+    map.flyTo(V6_LOCATION, HOME_MAP_ZOOM, { animate: true, duration: 0.65 });
   };
 
   const openBooking = () => {
@@ -476,6 +491,16 @@ export default function Home() {
                 role="region"
                 aria-label="Interactive map showing V6 Brevvski at No. 27 K G Road, Gandhinagar, Bengaluru"
               />
+              <button
+                type="button"
+                className="home-location__recenter"
+                onClick={recenterHomeMap}
+                aria-label="Recenter map on V6 Brevvski"
+                title="Trace V6 Brevvski"
+              >
+                <Crosshair size={18} strokeWidth={2} />
+                <span>Trace V6</span>
+              </button>
               <div className="home-location__map-stamp" aria-hidden="true">
                 <span>Route</span>
                 <strong>V6</strong>
