@@ -414,6 +414,73 @@ export default function Home() {
         <section id="kitchen" className="kitchen-section section-pad">
           <div className="page-pad kitchen-grid"><div className="kitchen-copy" data-reveal="fade-up"><div className="section-kicker">Destination / The kitchen</div><h2>A table for<br /><em>the whole night.</em></h2><p>Big flavours, honest ingredients, and plates designed for the middle of the table. Bengaluru comfort with a brewery appetite.</p><button type="button" className="button button--dark" onClick={() => navigate("/menu")}>Open the menu <ArrowUpRight size={16} /></button></div><div className="kitchen-photo-wrap" data-reveal="scale-in" style={{ "--reveal-delay": "120ms" } as React.CSSProperties}><img src={assets.food} alt="Shared craft dining dishes on a dark table" className="kitchen-photo" /><div className="kitchen-note"><span>Tonight's table</span><strong>Smoke  spice<br />and a cold one.</strong></div></div></div>
         </section>
+
+        <section className="home-location section-pad page-pad" aria-labelledby="home-location-title">
+          <div className="home-location__head" data-reveal="fade-up">
+            <div>
+              <div className="section-kicker section-kicker--light">Destination / Find us</div>
+              <h2 id="home-location-title">Meet us in<br /><em>Majestic.</em></h2>
+            </div>
+            <p>Five minutes from the station, right in the middle of Bengaluru. Come for the first pour and stay for the whole evening.</p>
+          </div>
+
+          <div className="home-location__grid" data-reveal="scale-in" style={{ "--reveal-delay": "100ms" } as React.CSSProperties}>
+            <div className="home-location__map-shell">
+              <div className="home-location__map-topline">
+                <span>Map / Majestic Bengaluru</span>
+                <strong><Footprints size={13} /> 05 min from the station</strong>
+              </div>
+              <iframe
+                className="home-location__map"
+                title="Map showing V6 Brevvski in Majestic, Bengaluru"
+                src="https://www.google.com/maps?q=V6+Brevvski+Brewery+Majestic+Bengaluru&output=embed"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+              <div className="home-location__map-stamp" aria-hidden="true">
+                <span>Route</span>
+                <strong>V6</strong>
+                <small>Platform 06</small>
+              </div>
+              <a
+                className="home-location__map-link"
+                href="https://maps.google.com/?q=V6+Brevvski+Brewery+Majestic+Bengaluru"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Open in Maps <ArrowUpRight size={15} />
+              </a>
+            </div>
+
+            <aside className="home-location__panel">
+              <div className="home-location__panel-kicker"><span className="status-dot status-dot--live" /> Arrival / Live</div>
+              <h3>V6 Brevvski<br /><em>Majestic.</em></h3>
+              <p className="home-location__lede">A warm timber house for fresh beer, a proper kitchen, and late evenings at Bengaluru's exchange.</p>
+
+              <div className="home-location__facts">
+                <div>
+                  <span className="home-location__fact-icon"><MapPin size={18} strokeWidth={1.7} /></span>
+                  <span><small>Neighbourhood</small><strong>Kempegowda Road / Majestic, Bengaluru</strong></span>
+                </div>
+                <div>
+                  <span className="home-location__fact-icon"><Clock3 size={18} strokeWidth={1.7} /></span>
+                  <span><small>Hours</small><strong>Tuesday to Sunday / 12 PM to 1 AM</strong></span>
+                </div>
+                <div>
+                  <span className="home-location__fact-icon"><TrainFront size={18} strokeWidth={1.7} /></span>
+                  <span><small>From Majestic station</small><strong>About a five minute walk</strong></span>
+                </div>
+              </div>
+
+              <div className="home-location__actions">
+                <button type="button" className="button button--amber" onClick={openBooking}>Reserve a table <ArrowUpRight size={16} /></button>
+                <button type="button" className="home-location__route-link" onClick={() => navigate("/visit")}>See the full route <ArrowRight size={15} /></button>
+              </div>
+
+              <div className="home-location__meta"><span>Route V6-01</span><span>Fresh beer + kitchen</span><span>21+ only</span></div>
+            </aside>
+          </div>
+        </section>
           </>
         )}
 
