@@ -2576,3 +2576,115 @@ h2 em,
   .home-location__meta { gap: 9px; line-height: 1.5; }
   .home-location__meta span + span::before { margin-right: 9px; }
 }
+
+
+/* Home location mobile alignment + branded exact-location pin */
+.home-location__pin {
+  position: absolute;
+  z-index: 4;
+  left: 50%;
+  top: 52%;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 168px;
+  padding: 10px 12px;
+  color: var(--parchment);
+  background: rgba(36,20,12,.94);
+  border: 1px solid rgba(232,150,44,.48);
+  box-shadow: 0 10px 28px rgba(24,12,6,.30), 6px 6px 0 rgba(166,113,46,.14);
+  transform: translate(-50%, -100%);
+  backdrop-filter: blur(8px);
+}
+.home-location__pin::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -8px;
+  width: 14px;
+  height: 14px;
+  background: rgba(36,20,12,.94);
+  border-right: 1px solid rgba(232,150,44,.48);
+  border-bottom: 1px solid rgba(232,150,44,.48);
+  transform: translateX(-50%) rotate(45deg);
+}
+.home-location__pin-dot {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+  color: var(--espresso);
+  background: var(--amber);
+  border-radius: 50%;
+}
+.home-location__pin strong,
+.home-location__pin small {
+  display: block;
+}
+.home-location__pin strong {
+  color: var(--parchment);
+  font: 800 11px/1.15 "IBM Plex Mono", monospace;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+.home-location__pin small {
+  margin-top: 4px;
+  color: var(--honey);
+  font: 800 7px/1.2 "IBM Plex Mono", monospace;
+  letter-spacing: .10em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 600px) {
+  .home-location {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .home-location__head {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .home-location__grid {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    border-left: 0;
+    border-right: 0;
+    overflow: hidden;
+  }
+
+  .home-location__map-shell {
+    width: 100%;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .home-location__map {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .home-location__panel {
+    width: 100%;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .home-location__pin {
+    left: 50%;
+    top: 54%;
+    min-width: 150px;
+    padding: 9px 10px;
+    transform: translate(-50%, -100%);
+  }
+
+  .home-location__pin-dot {
+    width: 30px;
+    height: 30px;
+    flex-basis: 30px;
+  }
+}
